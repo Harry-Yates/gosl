@@ -23,19 +23,26 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   );
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
 
-  // Store selectedPills to localStorage
+  const localStorageKey = `selectedPills_${title}`;
+
+  // Load initial state from localStorage on client side
   useEffect(() => {
-    const initialPills = localStorage.getItem("selectedPills")
-      ? JSON.parse(localStorage.getItem("selectedPills") as string)
-      : [];
-    setSelectedPills(initialPills);
+    if (typeof window !== "undefined") {
+      const initialPills = localStorage.getItem(localStorageKey)
+        ? JSON.parse(localStorage.getItem(localStorageKey) as string)
+        : [];
+      setSelectedPills(initialPills);
+    }
   }, []);
 
   // Store selectedPills to localStorage
   useEffect(() => {
-    if (selectedPills.length > 0) {
-      console.log("Storing to localStorage:", JSON.stringify(selectedPills));
-      localStorage.setItem("selectedPills", JSON.stringify(selectedPills));
+    if (typeof window !== "undefined" && selectedPills.length > 0) {
+      console.log(
+        `Storing to localStorage for ${title}:`,
+        JSON.stringify(selectedPills)
+      );
+      localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
     }
   }, [selectedPills]);
 
