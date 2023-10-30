@@ -32,9 +32,13 @@ export const getDepartures = async (tubeStopId: string) => {
         const formattedName = departure.ProductAtStop?.name
           .replace("Länstrafik -Tunnelbana", "Tube")
           .trim();
-        const formattedDestination = departure.direction
-          .replace("T-bana", "")
-          .trim();
+
+        // Extract destination name using regex
+        const match = departure.direction.match(/^(.*?)\s?\(/);
+        const formattedDestination = match
+          ? match[1].replace("T-bana", "").trim()
+          : departure.direction;
+
         return {
           time: departure.time,
           destination: departure.direction,
