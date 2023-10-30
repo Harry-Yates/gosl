@@ -35,4 +35,33 @@
   &__info {
     font-size: $font-size-base;
   }
+
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $half-spacing-unit;
+    margin-top: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit;
+  }
+
+  .pill {
+    padding: $half-spacing-unit $base-spacing-unit;
+    border-radius: $base-spacing-unit;
+    border: 1px solid $secondary-color;
+    cursor: pointer;
+    background-color: $background-color;
+    color: $text-dark; // Dark text on a light background
+
+    &:hover {
+      background-color: lighten($primary-color, 10%);
+      color: $text-light; // Light text on a dark background
+    }
+
+    &.selected {
+      background-color: $primary-color;
+      color: $text-light; // Light text on a dark background
+      border-color: darken($primary-color, 10%);
+    }
+  }
 }

@@ -33,18 +33,18 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         : [];
       setSelectedPills(initialPills);
     }
-  }, []);
+  }, [localStorageKey]); // <-- Added localStorageKey to dependency array
 
   // Store selectedPills to localStorage
   useEffect(() => {
-    if (typeof window !== "undefined" && selectedPills.length > 0) {
+    if (typeof window !== "undefined") {
       console.log(
         `Storing to localStorage for ${title}:`,
         JSON.stringify(selectedPills)
       );
       localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
     }
-  }, [selectedPills]);
+  }, [selectedPills, localStorageKey, title]); // <-- Added localStorageKey and title to dependency array
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
