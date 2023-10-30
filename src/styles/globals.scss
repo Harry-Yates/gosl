@@ -1,0 +1,24 @@
+@import "./_variables.scss";
+@import "./_reset.scss";
+
+body {
+  font-family: $base-font-family;
+  background-color: $background-color;
+  color: $text-color;
+  font-size: $base-font-size;
+  line-height: $line-height;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}

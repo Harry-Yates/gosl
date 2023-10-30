@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset basic elements */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* Reset the body */
+body {
+  line-height: 1;
+  font-family: var(--primary-font);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Reset lists */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Reset anchor links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset images to ensure they are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reset input and button to remove browser specific styles */
+input,
+button {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+}
