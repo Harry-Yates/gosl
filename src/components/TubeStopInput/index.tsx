@@ -6,6 +6,7 @@ interface Departure {
   destination: string;
   time: string;
   formattedName?: string;
+  formattedDestination?: string;
 }
 
 interface TubeStopInputProps {
@@ -69,7 +70,8 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
             {departures?.map((departure: Departure, index: number) => (
               <li key={index}>
                 {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
-                {departure.destination} at {departure.time}
+                {departure.formattedDestination || departure.destination} at{" "}
+                {departure.time}
               </li>
             ))}
           </ul>
