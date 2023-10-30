@@ -33,7 +33,6 @@ export const getDepartures = async (tubeStopId: string) => {
           .replace("Länstrafik -Tunnelbana", "Tube")
           .trim();
 
-        // Extract destination name using regex
         const match = departure.direction.match(/^(.*?)\s?\(/);
         const formattedDestination = match
           ? match[1].replace("T-bana", "").trim()

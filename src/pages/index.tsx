@@ -7,11 +7,11 @@ const HomePage: React.FC = () => {
         title="Home"
         defaultStop="Gubbängen"
       />
-      <TubeStopInput
+      {/* <TubeStopInput
         title="Work"
         defaultStop="Odenplan"
-      />
-      <TubeStopInput title="Add +" />
+      /> */}
+      {/* <TubeStopInput title="Add +" /> */}
     </>
   );
 };

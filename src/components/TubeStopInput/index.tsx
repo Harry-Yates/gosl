@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 
 interface Departure {
@@ -21,6 +21,23 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   const [tubeStop, setTubeStop] = useState<string>(
     defaultStop || "T-Centralen"
   );
+  const [selectedPills, setSelectedPills] = useState<string[]>([]);
+
+  // Store selectedPills to localStorage
+  useEffect(() => {
+    const initialPills = localStorage.getItem("selectedPills")
+      ? JSON.parse(localStorage.getItem("selectedPills") as string)
+      : [];
+    setSelectedPills(initialPills);
+  }, []);
+
+  // Store selectedPills to localStorage
+  useEffect(() => {
+    if (selectedPills.length > 0) {
+      console.log("Storing to localStorage:", JSON.stringify(selectedPills));
+      localStorage.setItem("selectedPills", JSON.stringify(selectedPills));
+    }
+  }, [selectedPills]);
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
@@ -35,7 +52,23 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     console.log(`Fetching data for tube stop: ${tubeStop}`);
   };
 
-  console.log("Departures:", departures);
+  // Explicitly define the type for Set
+  const uniqueDestinations = Array.from(
+    new Set<string>(
+      departures?.map((d: Departure) => d.formattedDestination || "") || []
+    )
+  );
+
+  const handlePillClick = (destination: string) => {
+    const newPills = selectedPills.includes(destination)
+      ? selectedPills.filter((p) => p !== destination)
+      : [...selectedPills, destination];
+    setSelectedPills(newPills);
+  };
+
+  const filteredDepartures = departures?.filter((d: Departure) =>
+    selectedPills.includes(d.formattedDestination || "")
+  );
 
   return (
     <div className="tube-stop-input">
@@ -53,12 +86,19 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         Search
       </button>
 
-      {/* Display Tube Stop ID */}
-      {isLoadingId ? (
-        <p className="tube-stop-input__info">Loading tube stop ID...</p>
-      ) : (
-        <p className="tube-stop-input__info">Tube Stop ID: {tubeStopId}</p>
-      )}
+      {/* Display Pills */}
+      <div className="tube-stop-input__pills">
+        {uniqueDestinations?.map((destination, index) => (
+          <button
+            key={index}
+            className={`pill ${
+              selectedPills.includes(destination) ? "selected" : ""
+            }`}
+            onClick={() => handlePillClick(destination)}>
+            {destination}
+          </button>
+        ))}
+      </div>
 
       {/* Display Departures */}
       {isLoadingDepartures ? (
@@ -67,11 +107,10 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         <div>
           <h3>Departures:</h3>
           <ul>
-            {departures?.map((departure: Departure, index: number) => (
+            {filteredDepartures?.map((departure: Departure, index: number) => (
               <li key={index}>
                 {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
-                {departure.formattedDestination || departure.destination} at{" "}
-                {departure.time}
+                {departure.formattedDestination} at {departure.time}
               </li>
             ))}
           </ul>
