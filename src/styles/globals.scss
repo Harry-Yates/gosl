@@ -22,3 +22,9 @@ body {
   font-weight: 700;
   font-style: normal;
 }
+
+h1 {
+  font-family: $heading-font-family;
+  font-size: $font-size-xl;
+  color: $primary-color;
+}

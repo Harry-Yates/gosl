@@ -1,12 +1,19 @@
-// pages/index.tsx
-import React from "react";
+import TubeStopInput from "../components/TubeStopInput";
 
-const Home: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
-    <div>
-      <h1>Hello, world!</h1>
-    </div>
+    <>
+      <TubeStopInput
+        title="Home"
+        defaultStop="Gubbängen"
+      />
+      <TubeStopInput
+        title="Work"
+        defaultStop="Odenplan"
+      />
+      <TubeStopInput title="Add +" />
+    </>
   );
 };
 
-export default Home;
+export default HomePage;

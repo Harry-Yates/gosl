@@ -1,0 +1,13 @@
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
+  margin: $double-spacing-unit;
+
+  &__main {
+    background-color: $text-light;
+    border-radius: $half-spacing-unit;
+    box-shadow: 0 $half-spacing-unit $base-spacing-unit rgba(0, 0, 0, 0.1);
+  }
+}

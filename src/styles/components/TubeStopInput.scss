@@ -1,0 +1,38 @@
+.tube-stop-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $base-spacing-unit;
+  background-color: $background-color;
+  margin: $base-spacing-unit;
+
+  &__input,
+  &__button,
+  &__info {
+    margin-bottom: $half-spacing-unit;
+  }
+
+  &__input {
+    padding: $half-spacing-unit;
+    border-radius: $half-spacing-unit / 2;
+    border: 1px solid $secondary-color;
+  }
+
+  &__button {
+    padding: $half-spacing-unit $base-spacing-unit;
+    border-radius: $half-spacing-unit / 2;
+    border: none;
+    background-color: $primary-color;
+    color: $text-light;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  &__info {
+    font-size: $font-size-base;
+  }
+}
