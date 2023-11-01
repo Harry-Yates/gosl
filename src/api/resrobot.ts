@@ -19,10 +19,6 @@ export const getDepartures = async (tubeStopId: string) => {
       `https://api.resrobot.se/v2.1/departureBoard?id=${tubeStopId}&format=json&accessId=${apiKey}`
     );
 
-    if (!res.ok) {
-      throw new Error("API request failed");
-    }
-
     const data = await res.json();
 
     return (

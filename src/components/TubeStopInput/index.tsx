@@ -26,6 +26,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   const [filteredDepartures, setFilteredDepartures] = useState<
     Departure[] | null
   >(null);
+  const [walkingTime, setWalkingTime] = useState<number>(0); // New state for walking time
 
   const localStorageKey = `selectedPills_${title}`;
 
@@ -48,8 +49,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   useEffect(() => {
     const filterDepartures = () => {
       const currentTime = new Date();
-      const currentHours = currentTime.getHours();
-      const currentMinutes = currentTime.getMinutes();
+      currentTime.setMinutes(currentTime.getMinutes() + walkingTime); // Add walking time
 
       const newFilteredDepartures = departures?.filter((d: Departure) => {
         const [departureHours, departureMinutes] = d.time
@@ -57,9 +57,9 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
           .map(Number);
         return (
           selectedPills.includes(d.formattedDestination || "") &&
-          (departureHours > currentHours ||
-            (departureHours === currentHours &&
-              departureMinutes >= currentMinutes))
+          (departureHours > currentTime.getHours() ||
+            (departureHours === currentTime.getHours() &&
+              departureMinutes >= currentTime.getMinutes()))
         );
       });
 
@@ -72,21 +72,11 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     return () => {
       clearInterval(intervalId);
     };
-  }, [departures, selectedPills]);
+  }, [departures, selectedPills, walkingTime]); // Added walkingTime dependency
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTubeStop(e.target.value);
   };
-
-  const handleSubmit = () => {
-    console.log(`Fetching data for tube stop: ${tubeStop}`);
-  };
-
-  const uniqueDestinations = Array.from(
-    new Set<string>(
-      departures?.map((d: Departure) => d.formattedDestination || "") || []
-    )
-  );
 
   const handlePillClick = (destination: string) => {
     const newPills = selectedPills.includes(destination)
@@ -99,7 +89,14 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     if (selectAll) {
       setSelectedPills([]);
     } else {
-      setSelectedPills(uniqueDestinations);
+      setSelectedPills(
+        Array.from(
+          new Set<string>(
+            departures?.map((d: Departure) => d.formattedDestination || "") ||
+              []
+          )
+        )
+      );
     }
     setSelectAll(!selectAll);
   };
@@ -114,13 +111,24 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         placeholder={defaultStop}
         className="tube-stop-input__input"
       />
+      <input
+        type="number"
+        value={walkingTime}
+        onChange={(e) => setWalkingTime(parseInt(e.target.value, 10))}
+        placeholder="Walking time in minutes"
+      />
       <div className="tube-stop-input__pills">
         <button
           className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
           onClick={handleAllClick}>
           {selectAll ? "None" : "All"}
         </button>
-        {uniqueDestinations?.map((destination, index) => (
+        {Array.from(
+          new Set<string>(
+            departures?.map((d: Departure) => d.formattedDestination || "") ||
+              []
+          )
+        )?.map((destination, index) => (
           <button
             key={index}
             className={`pill ${
