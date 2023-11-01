@@ -22,10 +22,10 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     defaultStop || "T-Centralen"
   );
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   const localStorageKey = `selectedPills_${title}`;
 
-  // Load initial state from localStorage on client side
   useEffect(() => {
     if (typeof window !== "undefined") {
       const initialPills = localStorage.getItem(localStorageKey)
@@ -33,18 +33,20 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         : [];
       setSelectedPills(initialPills);
     }
-  }, [localStorageKey]); // <-- Added localStorageKey to dependency array
+  }, [localStorageKey]);
 
-  // Store selectedPills to localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log(
-        `Storing to localStorage for ${title}:`,
-        JSON.stringify(selectedPills)
-      );
       localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
     }
-  }, [selectedPills, localStorageKey, title]); // <-- Added localStorageKey and title to dependency array
+  }, [selectedPills, localStorageKey, title]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
@@ -59,7 +61,6 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     console.log(`Fetching data for tube stop: ${tubeStop}`);
   };
 
-  // Explicitly define the type for Set
   const uniqueDestinations = Array.from(
     new Set<string>(
       departures?.map((d: Departure) => d.formattedDestination || "") || []
@@ -75,6 +76,15 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
 
   const filteredDepartures = departures?.filter((d: Departure) =>
     selectedPills.includes(d.formattedDestination || "")
+  );
+
+  const updatedDepartures = filteredDepartures?.filter(
+    (departure: Departure) => {
+      const [hour, minute] = departure.time.split(":").map(Number);
+      const departureTime = new Date();
+      departureTime.setHours(hour, minute);
+      return departureTime >= currentTime;
+    }
   );
 
   return (
@@ -93,7 +103,6 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         Search
       </button>
 
-      {/* Display Pills */}
       <div className="tube-stop-input__pills">
         {uniqueDestinations?.map((destination, index) => (
           <button
@@ -107,14 +116,13 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         ))}
       </div>
 
-      {/* Display Departures */}
       {isLoadingDepartures ? (
         <p className="tube-stop-input__info">Loading departures...</p>
       ) : (
         <div>
           <h3>Departures:</h3>
           <ul>
-            {filteredDepartures?.map((departure: Departure, index: number) => (
+            {updatedDepartures?.map((departure: Departure, index: number) => (
               <li key={index}>
                 {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
                 {departure.formattedDestination} at {departure.time}
