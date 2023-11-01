@@ -26,20 +26,31 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   const [filteredDepartures, setFilteredDepartures] = useState<
     Departure[] | null
   >(null);
-  const [walkingTime, setWalkingTime] = useState<number>(0); // New state for walking time
+  const [walkingTime, setWalkingTime] = useState<number>(0);
 
   const localStorageKey = `selectedPills_${title}`;
+  const walkingTimeKey = `walkingTime_${title}`; // Unique key for walking time
 
   useEffect(() => {
-    const initialPills = localStorage.getItem(localStorageKey)
-      ? JSON.parse(localStorage.getItem(localStorageKey) as string)
-      : [];
-    setSelectedPills(initialPills);
-  }, [localStorageKey]);
+    if (typeof window !== "undefined") {
+      const initialPills = localStorage.getItem(localStorageKey)
+        ? JSON.parse(localStorage.getItem(localStorageKey) as string)
+        : [];
+      setSelectedPills(initialPills);
+
+      const storedWalkingTime = localStorage.getItem(walkingTimeKey);
+      if (storedWalkingTime) {
+        setWalkingTime(parseInt(storedWalkingTime, 10));
+      }
+    }
+  }, [localStorageKey, walkingTimeKey]);
 
   useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
-  }, [selectedPills, localStorageKey, title]);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
+      localStorage.setItem(walkingTimeKey, walkingTime.toString());
+    }
+  }, [selectedPills, localStorageKey, title, walkingTime, walkingTimeKey]);
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
