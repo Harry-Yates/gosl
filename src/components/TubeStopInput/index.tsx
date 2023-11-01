@@ -23,6 +23,9 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   );
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState<boolean>(false);
+  const [filteredDepartures, setFilteredDepartures] = useState<
+    Departure[] | null
+  >(null);
 
   const localStorageKey = `selectedPills_${title}`;
 
@@ -41,6 +44,35 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
     tubeStopId || ""
   );
+
+  useEffect(() => {
+    const filterDepartures = () => {
+      const currentTime = new Date();
+      const currentHours = currentTime.getHours();
+      const currentMinutes = currentTime.getMinutes();
+
+      const newFilteredDepartures = departures?.filter((d: Departure) => {
+        const [departureHours, departureMinutes] = d.time
+          .split(":")
+          .map(Number);
+        return (
+          selectedPills.includes(d.formattedDestination || "") &&
+          (departureHours > currentHours ||
+            (departureHours === currentHours &&
+              departureMinutes >= currentMinutes))
+        );
+      });
+
+      setFilteredDepartures(newFilteredDepartures || null);
+    };
+
+    filterDepartures();
+    const intervalId = setInterval(filterDepartures, 60000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [departures, selectedPills]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTubeStop(e.target.value);
@@ -72,10 +104,6 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     setSelectAll(!selectAll);
   };
 
-  const filteredDepartures = departures?.filter((d: Departure) =>
-    selectedPills.includes(d.formattedDestination || "")
-  );
-
   return (
     <div className="tube-stop-input">
       <h2>{title}</h2>
@@ -86,18 +114,12 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         placeholder={defaultStop}
         className="tube-stop-input__input"
       />
-      <button
-        onClick={handleSubmit}
-        className="tube-stop-input__button">
-        Search
-      </button>
       <div className="tube-stop-input__pills">
         <button
           className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
           onClick={handleAllClick}>
           {selectAll ? "None" : "All"}
         </button>
-
         {uniqueDestinations?.map((destination, index) => (
           <button
             key={index}
@@ -109,7 +131,6 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
           </button>
         ))}
       </div>
-
       {isLoadingDepartures ? (
         <p className="tube-stop-input__info">Loading departures...</p>
       ) : (
