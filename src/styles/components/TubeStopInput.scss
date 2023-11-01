@@ -63,5 +63,16 @@
       color: $text-light; // Light text on a dark background
       border-color: darken($primary-color, 10%);
     }
+    &.all-none-pill {
+      color: $text-dark;
+      font-weight: bold;
+      border-color: darken($primary-color, 10%);
+    }
+
+    &.all-selected {
+      color: $text-dark;
+      font-weight: bold;
+      border-color: darken($primary-color, 10%);
+    }
   }
 }

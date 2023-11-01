@@ -22,31 +22,20 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     defaultStop || "T-Centralen"
   );
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [selectAll, setSelectAll] = useState<boolean>(false);
 
   const localStorageKey = `selectedPills_${title}`;
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const initialPills = localStorage.getItem(localStorageKey)
-        ? JSON.parse(localStorage.getItem(localStorageKey) as string)
-        : [];
-      setSelectedPills(initialPills);
-    }
+    const initialPills = localStorage.getItem(localStorageKey)
+      ? JSON.parse(localStorage.getItem(localStorageKey) as string)
+      : [];
+    setSelectedPills(initialPills);
   }, [localStorageKey]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
-    }
+    localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
   }, [selectedPills, localStorageKey, title]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
@@ -74,17 +63,17 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
     setSelectedPills(newPills);
   };
 
+  const handleAllClick = () => {
+    if (selectAll) {
+      setSelectedPills([]);
+    } else {
+      setSelectedPills(uniqueDestinations);
+    }
+    setSelectAll(!selectAll);
+  };
+
   const filteredDepartures = departures?.filter((d: Departure) =>
     selectedPills.includes(d.formattedDestination || "")
-  );
-
-  const updatedDepartures = filteredDepartures?.filter(
-    (departure: Departure) => {
-      const [hour, minute] = departure.time.split(":").map(Number);
-      const departureTime = new Date();
-      departureTime.setHours(hour, minute);
-      return departureTime >= currentTime;
-    }
   );
 
   return (
@@ -102,8 +91,13 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         className="tube-stop-input__button">
         Search
       </button>
-
       <div className="tube-stop-input__pills">
+        <button
+          className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
+          onClick={handleAllClick}>
+          {selectAll ? "None" : "All"}
+        </button>
+
         {uniqueDestinations?.map((destination, index) => (
           <button
             key={index}
@@ -122,7 +116,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         <div>
           <h3>Departures:</h3>
           <ul>
-            {updatedDepartures?.map((departure: Departure, index: number) => (
+            {filteredDepartures?.map((departure: Departure, index: number) => (
               <li key={index}>
                 {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
                 {departure.formattedDestination} at {departure.time}
