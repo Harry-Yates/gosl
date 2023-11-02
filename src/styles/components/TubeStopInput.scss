@@ -6,6 +6,8 @@
   padding: $base-spacing-unit;
   background-color: $background-color;
   margin: $base-spacing-unit;
+  max-width: 25rem;
+  border-radius: $double-spacing-unit;
 
   &__input,
   &__button,

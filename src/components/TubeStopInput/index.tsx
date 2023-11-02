@@ -114,7 +114,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
 
   return (
     <div className="tube-stop-input">
-      <h2>{title}</h2>
+      <h1>{title}</h1>
       <input
         type="text"
         value={tubeStop}
@@ -127,6 +127,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         value={walkingTime}
         onChange={(e) => setWalkingTime(parseInt(e.target.value, 10))}
         placeholder="Walking time in minutes"
+        className="tube-stop-input__input"
       />
       <div className="tube-stop-input__pills">
         <button

@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
         title="Work"
         defaultStop="Odenplan"
       />
-      <TubeStopInput title="Add +" />
+      {/* <TubeStopInput title="Add +" /> */}
     </>
   );
 };

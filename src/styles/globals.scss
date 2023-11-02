@@ -23,8 +23,111 @@ body {
   font-style: normal;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $heading-font-family;
-  font-size: $font-size-xl;
   color: $primary-color;
+  margin-top: $base-spacing-unit;
+  margin-bottom: $half-spacing-unit;
 }
+
+h1 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+}
+
+h5 {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-light;
+}
+
+h6 {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-light;
+}
+
+p {
+  margin-bottom: $half-spacing-unit;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: $base-spacing-unit;
+}
+
+li {
+  margin-bottom: $half-spacing-unit;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($accent-color, 10%);
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: $base-font-family;
+  font-size: $font-size-base;
+  padding: $half-spacing-unit;
+  border-radius: $half-spacing-unit;
+  border: 1px solid $secondary-color;
+  background-color: $primary-color;
+  color: $text-light;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+input,
+select,
+textarea {
+  font-family: $base-font-family;
+  font-size: $font-size-base;
+  padding: $half-spacing-unit;
+  border-radius: $half-spacing-unit;
+  border: 1px solid $secondary-color;
+  color: $text-color;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+// Responsive typography
+@media (max-width: $breakpoint-md) {
+  h1 {
+    font-size: $font-size-lg;
+  }
+  // Adjust other headings as needed
+}
+
+// Add any other global styles you think might be necessary
