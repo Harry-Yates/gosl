@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
+import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
 
 interface Departure {
   name: string;
@@ -124,8 +125,15 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
     setSelectAll(!selectAll);
   };
 
+  const trafficLightColor = useTrafficLightSystem(
+    filteredDepartures,
+    walkingTime
+  );
+
   return (
-    <div className="tube-stop-input">
+    <div
+      className={`tube-stop-input ${trafficLightColor ? "traffic-light" : ""}`}
+      style={{ borderColor: trafficLightColor }}>
       <h1>{title}</h1>
       <input
         type="text"

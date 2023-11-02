@@ -34,6 +34,13 @@ $base-spacing-unit: 8px;
 $half-spacing-unit: $base-spacing-unit / 2;
 $double-spacing-unit: $base-spacing-unit * 2;
 
+// Container Widths
+$container-width-xs: 20rem;
+$container-width-sm: 25rem;
+$container-width-md: 30rem;
+$container-width-lg: 35rem;
+$container-width-xl: 40rem;
+
 // Breakpoints
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
