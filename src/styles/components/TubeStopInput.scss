@@ -9,29 +9,39 @@
   max-width: $container-width-sm;
   border-radius: $double-spacing-unit;
   border: $half-spacing-unit solid transparent;
+
   &__input,
-  &__button,
   &__info {
     margin-bottom: $half-spacing-unit;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__title {
+    text-align: left;
+    flex-grow: 1;
+  }
+
+  &__toggle {
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  &__toggle:hover {
+    color: $accent-color;
+    color: $text-color;
   }
 
   &__input {
     padding: $half-spacing-unit;
     border-radius: $base-spacing-unit / 2;
     border: 1x solid $secondary-color;
-  }
-
-  &__button {
-    padding: $half-spacing-unit $base-spacing-unit;
-    border-radius: $half-spacing-unit / 2;
-    border: none;
-    background-color: $primary-color;
-    color: $text-light;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
   }
 
   &__info {
@@ -62,19 +72,26 @@
 
     &.selected {
       background-color: $primary-color;
-      color: $text-light; // Light text on a dark background
+      color: $text-light;
       border-color: darken($primary-color, 10%);
     }
     &.all-none-pill {
       color: $text-dark;
       font-weight: bold;
-      border-color: darken($primary-color, 10%);
     }
 
     &.all-selected {
-      color: $text-dark;
+      color: $text-light;
+      background-color: $accent-color;
       font-weight: bold;
-      border-color: darken($primary-color, 10%);
     }
   }
+}
+
+.tube-stop-input {
+  background-color: $background-color;
+}
+
+[data-theme="dark"] .tube-stop-input {
+  background-color: $dark-background-color;
 }

@@ -1,5 +1,5 @@
-// Colors
-$primary-color: #281969;
+// Light theme colors
+$primary-color: #eb9b3b;
 $secondary-color: #1a1a1a;
 $accent-color: #eb9b3b;
 $background-color: #f2f2f2;
@@ -8,6 +8,17 @@ $text-light: #fff;
 $text-dark: #060606;
 $error-color: #e74c3c;
 $success-color: #2ecc71;
+
+// Dark theme colors
+$dark-primary-color: #1a1a1a;
+$dark-secondary-color: #333;
+$dark-accent-color: #eb9b3b;
+$dark-background-color: #121212;
+$dark-text-color: #f2f2f2;
+$dark-text-light: #fff;
+$dark-text-dark: #060606;
+$dark-error-color: #e74c3c;
+$dark-success-color: #2ecc71;
 
 // Typography
 $base-font-family: "Poppins", sans-serif;

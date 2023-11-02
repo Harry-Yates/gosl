@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
+import { FaCog } from "react-icons/fa";
 
 interface Departure {
   name: string;
@@ -21,6 +22,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
     Departure[] | null
   >(null);
   const [walkingTime, setWalkingTime] = useState<number>(0);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
 
   const tubeStopKey = `tubeStop_${title}`;
   const localStorageKey = `selectedPills_${title}`;
@@ -102,10 +104,24 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
   };
 
   const handlePillClick = (destination: string) => {
-    const newPills = selectedPills.includes(destination)
-      ? selectedPills.filter((p) => p !== destination)
-      : [...selectedPills, destination];
-    setSelectedPills(newPills);
+    if (selectedPills.length === 0) {
+      const allDestinations: string[] =
+        departures?.map((d: Departure) => d.formattedDestination || "") || [];
+      setSelectedPills(
+        allDestinations.filter((dest: string) => dest !== destination)
+      );
+      setSelectAll(false);
+    } else {
+      const newPills: string[] = selectedPills.includes(destination)
+        ? selectedPills.filter((p: string) => p !== destination)
+        : [...selectedPills, destination];
+      setSelectedPills(newPills);
+      if (newPills.length === departures?.length) {
+        setSelectAll(true);
+      } else {
+        setSelectAll(false);
+      }
+    }
   };
 
   const handleAllClick = () => {
@@ -129,47 +145,60 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
     walkingTime
   );
 
+  const toggleSettings = () => {
+    setShowSettings((prev) => !prev);
+  };
+
   return (
     <div
       className={`tube-stop-input ${trafficLightColor ? "traffic-light" : ""}`}
       style={{ borderColor: trafficLightColor }}>
-      <h1>{title}</h1>
-      <input
-        type="text"
-        value={tubeStop}
-        onChange={handleTubeStopChange}
-        placeholder="Enter tube stop"
-        className="tube-stop-input__input"
-      />
-      <input
-        type="number"
-        value={walkingTime}
-        onChange={(e) => setWalkingTime(parseInt(e.target.value, 10))}
-        placeholder="Enter walk time"
-        className="tube-stop-input__input"
-      />
-      <div className="tube-stop-input__pills">
-        <button
-          className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
-          onClick={handleAllClick}>
-          {selectAll ? "None" : "All"}
-        </button>
-        {departures &&
-          Array.from(
-            new Set<string>(
-              departures.map((d: Departure) => d.formattedDestination || "")
-            )
-          ).map((destination, index) => (
-            <button
-              key={index}
-              className={`pill ${
-                selectedPills.includes(destination) ? "selected" : ""
-              }`}
-              onClick={() => handlePillClick(destination)}>
-              {destination}
-            </button>
-          ))}
+      <div className="tube-stop-input__header">
+        <h1 className="tube-stop-input__title">{title}</h1>
+        <FaCog
+          className="tube-stop-input__toggle icon"
+          onClick={toggleSettings}></FaCog>
       </div>
+      {showSettings && (
+        <>
+          <input
+            type="text"
+            value={tubeStop}
+            onChange={handleTubeStopChange}
+            placeholder="Enter tube stop"
+            className="tube-stop-input__input"
+          />
+          <input
+            type="number"
+            value={walkingTime}
+            onChange={(e) => setWalkingTime(parseInt(e.target.value, 10))}
+            placeholder="Enter walk time"
+            className="tube-stop-input__input"
+          />
+          <div className="tube-stop-input__pills">
+            <button
+              className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
+              onClick={handleAllClick}>
+              {selectAll ? "None" : "All"}
+            </button>
+            {departures &&
+              Array.from(
+                new Set<string>(
+                  departures.map((d: Departure) => d.formattedDestination || "")
+                )
+              ).map((destination, index) => (
+                <button
+                  key={index}
+                  className={`pill ${
+                    selectedPills.includes(destination) ? "selected" : ""
+                  }`}
+                  onClick={() => handlePillClick(destination)}>
+                  {destination}
+                </button>
+              ))}
+          </div>
+        </>
+      )}
       {isLoadingDepartures ? (
         <p className="tube-stop-input__info">Loading departures...</p>
       ) : (

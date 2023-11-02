@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $background-color;
   margin: $double-spacing-unit;
   border-radius: 0.9375rem;
 
@@ -10,5 +9,38 @@
     background-color: $text-light;
     border-radius: $double-spacing-unit;
     box-shadow: 0 $half-spacing-unit $base-spacing-unit rgba(0, 0, 0, 0.1);
+  }
+
+  &__dark-mode-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; // Adjust size as needed
+    color: $text-color;
+  }
+
+  &__dark-mode-toggle:hover {
+    color: $accent-color;
+  }
+}
+
+// Dark theme styles
+[data-theme="dark"] {
+  background-color: $dark-background-color;
+
+  .layout__main {
+    background-color: $dark-background-color;
+    color: $dark-text-color;
+  }
+
+  .layout__dark-mode-toggle {
+    color: $dark-text-color;
+  }
+
+  .layout__dark-mode-toggle:hover {
+    color: $accent-color;
   }
 }

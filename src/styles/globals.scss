@@ -9,6 +9,14 @@ body {
   line-height: $line-height;
 }
 
+// Responsive typography
+@media (max-width: $breakpoint-md) {
+  h1 {
+    font-size: $font-size-lg;
+  }
+  // ... other responsive styles
+}
+
 @font-face {
   font-family: "Poppins";
   src: url("/fonts/Poppins-Regular.ttf") format("truetype");
@@ -30,7 +38,7 @@ h4,
 h5,
 h6 {
   font-family: $heading-font-family;
-  color: $primary-color;
+  color: $text-color;
   margin-top: $base-spacing-unit;
   margin-bottom: $half-spacing-unit;
 }
@@ -122,12 +130,58 @@ textarea {
   }
 }
 
-// Responsive typography
-@media (max-width: $breakpoint-md) {
-  h1 {
-    font-size: $font-size-lg;
+// Dark mode styles
+[data-theme="dark"] {
+  body {
+    background-color: $dark-background-color; // Dark mode background color
+    color: $dark-text-color; // Dark mode text color
   }
-  // Adjust other headings as needed
+
+  // Override styles for other elements in dark mode
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $dark-text-color; // Dark mode color for headings
+  }
+
+  a {
+    color: $dark-accent-color; // Dark mode color for links
+
+    &:hover {
+      color: darken(
+        $dark-accent-color,
+        10%
+      ); // Darken the link color on hover in dark mode
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    border: 1px solid $dark-secondary-color; // Dark mode border color for form elements
+    color: $dark-text-color; // Dark mode text color for form elements
+
+    &:focus {
+      border-color: $dark-primary-color; // Dark mode border color on focus for form elements
+    }
+  }
+
+  // Add any other dark mode specific styles here
 }
 
-// Add any other global styles you think might be necessary
+.dark-mode-icon .icon,
+.dark-mode-icon .icon {
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.dark-mode-icon .icon:hover,
+.dark-mode-icon .icon:hover {
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
