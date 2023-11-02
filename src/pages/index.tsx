@@ -3,14 +3,8 @@ import TubeStopInput from "../components/TubeStopInput";
 const HomePage: React.FC = () => {
   return (
     <>
-      <TubeStopInput
-        title="Home"
-        defaultStop="Gubbängen"
-      />
-      <TubeStopInput
-        title="Work"
-        defaultStop="Odenplan"
-      />
+      <TubeStopInput title="Home" />
+      <TubeStopInput title="Work" />
       {/* <TubeStopInput title="Add +" /> */}
     </>
   );

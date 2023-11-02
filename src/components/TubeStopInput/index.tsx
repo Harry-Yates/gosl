@@ -11,16 +11,10 @@ interface Departure {
 
 interface TubeStopInputProps {
   title: string;
-  defaultStop?: string;
 }
 
-const TubeStopInput: React.FC<TubeStopInputProps> = ({
-  title,
-  defaultStop,
-}) => {
-  const [tubeStop, setTubeStop] = useState<string>(
-    defaultStop || "T-Centralen"
-  );
+const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
+  const [tubeStop, setTubeStop] = useState<string>("");
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState<boolean>(false);
   const [filteredDepartures, setFilteredDepartures] = useState<
@@ -28,11 +22,18 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
   >(null);
   const [walkingTime, setWalkingTime] = useState<number>(0);
 
+  const tubeStopKey = `tubeStop_${title}`;
   const localStorageKey = `selectedPills_${title}`;
-  const walkingTimeKey = `walkingTime_${title}`; // Unique key for walking time
+  const walkingTimeKey = `walkingTime_${title}`;
 
+  // Load initial state from local storage
   useEffect(() => {
     if (typeof window !== "undefined") {
+      const storedTubeStop = localStorage.getItem(tubeStopKey);
+      if (storedTubeStop) {
+        setTubeStop(storedTubeStop);
+      }
+
       const initialPills = localStorage.getItem(localStorageKey)
         ? JSON.parse(localStorage.getItem(localStorageKey) as string)
         : [];
@@ -43,14 +44,23 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
         setWalkingTime(parseInt(storedWalkingTime, 10));
       }
     }
-  }, [localStorageKey, walkingTimeKey]);
+  }, [localStorageKey, walkingTimeKey, tubeStopKey]);
 
+  // Save to local storage on change
   useEffect(() => {
     if (typeof window !== "undefined") {
+      localStorage.setItem(tubeStopKey, tubeStop);
       localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
       localStorage.setItem(walkingTimeKey, walkingTime.toString());
     }
-  }, [selectedPills, localStorageKey, title, walkingTime, walkingTimeKey]);
+  }, [
+    tubeStop,
+    selectedPills,
+    walkingTime,
+    tubeStopKey,
+    localStorageKey,
+    walkingTimeKey,
+  ]);
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
   const { data: departures, isLoading: isLoadingDepartures } = useDepartures(
@@ -77,15 +87,17 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
       setFilteredDepartures(newFilteredDepartures || null);
     };
 
-    filterDepartures();
+    if (departures) {
+      filterDepartures();
+    }
     const intervalId = setInterval(filterDepartures, 60000);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [departures, selectedPills, walkingTime]); // Added walkingTime dependency
+  }, [departures, selectedPills, walkingTime]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTubeStopChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTubeStop(e.target.value);
   };
 
@@ -118,15 +130,15 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
       <input
         type="text"
         value={tubeStop}
-        onChange={handleChange}
-        placeholder={defaultStop}
+        onChange={handleTubeStopChange}
+        placeholder="Enter tube stop"
         className="tube-stop-input__input"
       />
       <input
         type="number"
         value={walkingTime}
         onChange={(e) => setWalkingTime(parseInt(e.target.value, 10))}
-        placeholder="Walking time in minutes"
+        placeholder="Enter walk time"
         className="tube-stop-input__input"
       />
       <div className="tube-stop-input__pills">
@@ -135,21 +147,21 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({
           onClick={handleAllClick}>
           {selectAll ? "None" : "All"}
         </button>
-        {Array.from(
-          new Set<string>(
-            departures?.map((d: Departure) => d.formattedDestination || "") ||
-              []
-          )
-        )?.map((destination, index) => (
-          <button
-            key={index}
-            className={`pill ${
-              selectedPills.includes(destination) ? "selected" : ""
-            }`}
-            onClick={() => handlePillClick(destination)}>
-            {destination}
-          </button>
-        ))}
+        {departures &&
+          Array.from(
+            new Set<string>(
+              departures.map((d: Departure) => d.formattedDestination || "")
+            )
+          ).map((destination, index) => (
+            <button
+              key={index}
+              className={`pill ${
+                selectedPills.includes(destination) ? "selected" : ""
+              }`}
+              onClick={() => handlePillClick(destination)}>
+              {destination}
+            </button>
+          ))}
       </div>
       {isLoadingDepartures ? (
         <p className="tube-stop-input__info">Loading departures...</p>
