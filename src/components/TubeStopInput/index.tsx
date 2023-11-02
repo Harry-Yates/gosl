@@ -13,7 +13,6 @@ interface Departure {
 interface TubeStopInputProps {
   title: string;
 }
-
 const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
   const [tubeStop, setTubeStop] = useState<string>("");
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
