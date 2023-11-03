@@ -16,8 +16,6 @@ GOSL aims to simplify the process of navigating the Swedish tube system by offer
 
 ## Future Enhancements
 
-## Future Enhancements
-
 - **Auto-complete for Tube Stops:** Introduce an auto-complete feature for tube stops to assist users in quickly finding their destinations.
 - **Geolocation-Based Walking Time:** Automate walking time calculations by using the user's current location, eliminating the need for manual input while planning the journey.
 - **User Profiles:** Implementation of user profiles for custom settings across multiple devices.
