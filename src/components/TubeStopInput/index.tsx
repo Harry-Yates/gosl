@@ -107,24 +107,12 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
   };
 
   const handlePillClick = (destination: string) => {
-    if (selectedPills.length === 0) {
-      const allDestinations: string[] =
-        departures?.map((d: Departure) => d.formattedDestination || "") || [];
-      setSelectedPills(
-        allDestinations.filter((dest: string) => dest !== destination)
-      );
-      setSelectAll(false);
+    if (selectedPills.includes(destination)) {
+      setSelectedPills(selectedPills.filter((p: string) => p !== destination));
     } else {
-      const newPills: string[] = selectedPills.includes(destination)
-        ? selectedPills.filter((p: string) => p !== destination)
-        : [...selectedPills, destination];
-      setSelectedPills(newPills);
-      if (newPills.length === departures?.length) {
-        setSelectAll(true);
-      } else {
-        setSelectAll(false);
-      }
+      setSelectedPills([...selectedPills, destination]);
     }
+    setSelectAll(selectedPills.length === departures?.length - 1);
   };
 
   const handleAllClick = () => {

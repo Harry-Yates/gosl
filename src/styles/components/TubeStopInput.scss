@@ -147,7 +147,7 @@
 
     &.selected {
       background-color: $dark-primary-color;
-      color: $dark-text-light;
+      color: $dark-accent-color;
       border-color: darken($dark-primary-color, 10%);
 
       &:hover {

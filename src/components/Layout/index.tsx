@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,13 +39,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="layout__title">
             <h1>GoSL</h1>
             <span>
-              <span className="color-green">Swedish Train </span>
+              <span className="color-green">Depature </span>
               <span className="color-yellow">Traffic </span>
-              <span className="color-red"> Light</span>
+              <span className="color-red">Light</span>
             </span>
           </div>
-          <p>Click the settings button</p>
-          <p>Enter a tube stop and time to walk to station</p>
+          <p>
+            Click settings <FaCog />
+          </p>
+          <p>
+            Enter a Stockholm tube stop and your walk time (mins) to the station
+          </p>
           <p>Never miss a train</p>
         </header>
         <div
