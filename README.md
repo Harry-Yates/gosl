@@ -4,7 +4,7 @@ GOSL is a React-based web application designed to streamline the commuting exper
 
 ## Project Summary
 
-GOSL aims to simplify the process of navigating the Swedish tube system by offering live updates, personalised station information, and an intuitive traffic light system to indicate departure urgency. With features that allow for customisation of departure boards and walking times, GOSL is the quintessential travel companion for residents and visitors alike.
+GOSL is a tool designed to assist commuters with real-time departure information for the Swedish tube system. At its core, GOSL serves as a proof of concept for future hardware integration, aiming to provide a quick way to know when to leave for your train. The interface features a traffic light system to visually communicate the urgency of departures, allowing users to customise their departure boards and walking times for a tailored commuting experience.
 
 ### Features
 
@@ -13,6 +13,8 @@ GOSL aims to simplify the process of navigating the Swedish tube system by offer
 - Traffic light indicator system for departure urgency.
 - Customisable station titles for a personalised experience.
 - Responsive design for a seamless experience across various devices.
+
+## Future Enhancements
 
 ## Future Enhancements
 
