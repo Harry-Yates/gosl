@@ -22,6 +22,11 @@
     text-align: left;
   }
 
+  &__trash:hover {
+    color: $dark-accent-color;
+    cursor: pointer;
+  }
+
   &__title {
     display: flex;
     align-items: center;
@@ -131,6 +136,11 @@
 
     &__dark-mode-toggle:hover {
       color: $dark-accent-color;
+    }
+
+    &__trash:hover {
+      color: $dark-accent-color;
+      cursor: pointer;
     }
   }
 }
