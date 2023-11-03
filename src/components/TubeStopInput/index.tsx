@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
-import { FaCog } from "react-icons/fa";
+import { FaCog, FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 interface Departure {
   name: string;
@@ -27,6 +27,9 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
   const tubeStopKey = `tubeStop_${title}`;
   const localStorageKey = `selectedPills_${title}`;
   const walkingTimeKey = `walkingTime_${title}`;
+  const [showAllDepartures, setShowAllDepartures] = useState<boolean>(false);
+
+  const MAX_VISIBLE_DEPARTURES = 2;
 
   // Load initial state from local storage
   useEffect(() => {
@@ -157,7 +160,8 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
         <h1 className="tube-stop-input__title">{title}</h1>
         <FaCog
           className="tube-stop-input__toggle icon"
-          onClick={toggleSettings}></FaCog>
+          onClick={toggleSettings}
+        />
       </div>
       {showSettings && (
         <>
@@ -203,15 +207,27 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
         <p className="tube-stop-input__info">Loading departures...</p>
       ) : (
         <div>
-          <h3>Departures:</h3>
+          <h4>Departures:</h4>
           <ul>
-            {filteredDepartures?.map((departure: Departure, index: number) => (
+            {(showAllDepartures
+              ? filteredDepartures
+              : filteredDepartures?.slice(0, MAX_VISIBLE_DEPARTURES)
+            )?.map((departure: Departure, index: number) => (
               <li key={index}>
                 {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
                 {departure.formattedDestination} at {departure.time}
               </li>
             ))}
           </ul>
+          {filteredDepartures &&
+            filteredDepartures.length > MAX_VISIBLE_DEPARTURES && (
+              <h6
+                onClick={() => setShowAllDepartures(!showAllDepartures)}
+                className="show-more-less-button">
+                {showAllDepartures ? <FaAngleUp /> : <FaAngleDown />}
+                {showAllDepartures ? "Show Less" : "Show More"}
+              </h6>
+            )}
         </div>
       )}
     </div>

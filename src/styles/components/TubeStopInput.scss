@@ -25,27 +25,32 @@
   &__title {
     text-align: left;
     flex-grow: 1;
+    font-family: $heading-font-family;
+    font-size: $font-size-lg;
   }
 
   &__toggle {
     border: none;
     cursor: pointer;
-    font-size: 24px;
-  }
-
-  &__toggle:hover {
-    color: $accent-color;
+    font-size: $font-size-lg;
     color: $text-color;
+
+    &:hover {
+      color: $accent-color;
+    }
   }
 
   &__input {
     padding: $half-spacing-unit;
     border-radius: $base-spacing-unit / 2;
-    border: 1x solid $secondary-color;
+    border: 1px solid $secondary-color;
+    font-family: $base-font-family;
+    font-size: $font-size-base;
   }
 
   &__info {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
+    color: $text-color;
   }
 
   &__pills {
@@ -63,11 +68,13 @@
     border: 1px solid $secondary-color;
     cursor: pointer;
     background-color: $background-color;
-    color: $text-dark; // Dark text on a light background
+    color: $text-dark;
+    font-family: $base-font-family;
+    font-size: $font-size-sm;
 
     &:hover {
       background-color: lighten($primary-color, 10%);
-      color: $text-light; // Light text on a dark background
+      color: $text-light;
     }
 
     &.selected {
@@ -75,23 +82,74 @@
       color: $text-light;
       border-color: darken($primary-color, 10%);
     }
+
     &.all-none-pill {
       color: $text-dark;
-      font-weight: bold;
+      font-weight: $font-weight-bold;
     }
 
     &.all-selected {
       color: $text-light;
       background-color: $accent-color;
-      font-weight: bold;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .show-more-less-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $half-spacing-unit;
+    font-size: $font-size-sm;
+    color: $text-color;
+
+    svg {
+      margin-right: $half-spacing-unit;
+    }
+
+    &:hover {
+      color: $accent-color;
     }
   }
 }
 
-.tube-stop-input {
-  background-color: $background-color;
-}
-
 [data-theme="dark"] .tube-stop-input {
   background-color: $dark-background-color;
+  color: $dark-text-color;
+
+  &__toggle {
+    color: $dark-text-color;
+
+    &:hover {
+      color: $dark-accent-color;
+    }
+  }
+
+  .pill {
+    background-color: $dark-background-color;
+    color: $dark-text-dark;
+    border-color: $dark-secondary-color;
+
+    &:hover {
+      background-color: lighten($dark-primary-color, 10%);
+      color: $dark-text-light;
+    }
+
+    &.selected {
+      background-color: $dark-primary-color;
+      color: $dark-text-light;
+      border-color: darken($dark-primary-color, 10%);
+    }
+  }
+
+  .show-more-less-button {
+    color: $dark-text-color;
+
+    &:hover {
+      color: $dark-accent-color;
+    }
+  }
 }
