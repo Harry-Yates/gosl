@@ -6,7 +6,8 @@
   padding: $base-spacing-unit;
   background-color: $background-color;
   margin: $base-spacing-unit;
-  max-width: 20rem;
+  max-width: $container-width-xs;
+  min-width: $container-width-xxs;
   border-radius: $double-spacing-unit;
   border: $half-spacing-unit solid transparent;
 

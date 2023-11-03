@@ -4,7 +4,7 @@
 body {
   font-family: $base-font-family;
   background-color: $background-color;
-  color: $text-color;
+  color: $dark-text-color;
   font-size: $base-font-size;
   line-height: $line-height;
 }
@@ -14,7 +14,6 @@ body {
   h1 {
     font-size: $font-size-lg;
   }
-  // ... other responsive styles
 }
 
 @font-face {
@@ -133,8 +132,8 @@ textarea {
 // Dark mode styles
 [data-theme="dark"] {
   body {
-    background-color: $dark-background-color; // Dark mode background color
-    color: $dark-text-color; // Dark mode text color
+    background-color: $dark-background-color;
+    color: $dark-text-color;
   }
 
   // Override styles for other elements in dark mode
@@ -148,54 +147,35 @@ textarea {
   }
 
   a {
-    color: $dark-accent-color; // Dark mode color for links
+    color: $dark-accent-color;
 
     &:hover {
-      color: darken(
-        $dark-accent-color,
-        10%
-      ); // Darken the link color on hover in dark mode
+      color: darken($dark-accent-color, 10%);
     }
   }
-
-  // button {
-  //   background-color: $dark-primary-color; // Dark mode background color for buttons
-  //   color: $dark-text-light; // Dark mode text color for buttons
-  //   color: green; // Dark mode text color for buttons
-  //   border: 1px solid $dark-secondary-color; // Dark mode border color for buttons
-
-  //   &:hover {
-  //     background-color: lighten(
-  //       $dark-primary-color,
-  //       10%
-  //     ); // Lighten the button background on hover in dark mode
-  //   }
-  // }
 
   input,
   select,
   textarea {
-    border: 1px solid $dark-secondary-color; // Dark mode border color for form elements
-    color: $dark-text-color; // Dark mode text color for form elements
+    border: 1px solid $dark-secondary-color;
+    color: $dark-text-color;
 
     &:focus {
-      border-color: $dark-primary-color; // Dark mode border color on focus for form elements
+      border-color: $dark-primary-color;
     }
   }
-
-  // Add any other dark mode specific styles here
 }
 
 .dark-mode-icon .icon,
 .dark-mode-icon .icon {
   border: none;
   cursor: pointer;
-  font-size: 24px;
+  font-size: $font-size-lg;
 }
 
 .dark-mode-icon .icon:hover,
 .dark-mode-icon .icon:hover {
   border: none;
-  cursor: pointer;
-  font-size: 24px;
+  font-size: $font-size-lg;
+  color: $dark-accent-color;
 }

@@ -33,16 +33,30 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="layout">
-      <div
-        onClick={toggleDarkMode}
-        className="layout__dark-mode-toggle"
-        role="button" // Accessibility improvement
-        aria-pressed={darkMode} // Accessibility improvement
-        tabIndex={0} // Accessibility improvement
-      >
-        {darkMode ? <FaSun /> : <FaMoon />}
+      <div className="layout__container">
+        <header className="layout__header">
+          <div className="layout__title">
+            <h1>GoSL</h1>
+            <span>
+              <span className="color-green">Swedish Train </span>
+              <span className="color-yellow">Traffic </span>
+              <span className="color-red"> Light</span>
+            </span>
+          </div>
+          <p>Click the settings button</p>
+          <p>Enter a tube stop and time to walk to station</p>
+          <p>Never miss a train</p>
+        </header>
+        <div
+          onClick={toggleDarkMode}
+          className="layout__dark-mode-toggle"
+          role="button"
+          aria-pressed={darkMode}
+          tabIndex={0}>
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </div>
+        <div className="layout__main">{children}</div>
       </div>
-      <div className="layout__main">{children}</div>
     </div>
   );
 };
