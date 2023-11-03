@@ -2,13 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: $double-spacing-unit;
-  border-radius: 0.9375rem;
+  height: 100vh; // Take up the full height of the viewport
+  padding: $double-spacing-unit;
+  margin: auto; // This will help in centering if the content is smaller than the screen size
 
   &__main {
     background-color: $text-light;
     border-radius: $double-spacing-unit;
     box-shadow: 0 $half-spacing-unit $base-spacing-unit rgba(0, 0, 0, 0.1);
+    // width: 100vw; // Use a max-width for larger screens
+    // max-width: $container-width-lg; // Adjust this value as needed
+    margin: auto; // This ensures that the content is centered horizontally
   }
 
   &__dark-mode-toggle {
@@ -20,27 +24,32 @@
     cursor: pointer;
     font-size: 24px; // Adjust size as needed
     color: $text-color;
+    z-index: $zindex-modal; // Ensure it's above other elements
   }
 
-  &__dark-mode-toggle:hover {
-    color: $accent-color;
+  // Media queries for responsive adjustments
+  @media (min-width: $breakpoint-md) {
+    &__main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto; // Adjust height as necessary
+    }
   }
 }
 
 // Dark theme styles
 [data-theme="dark"] {
-  background-color: $dark-background-color;
-
-  .layout__main {
+  .layout {
     background-color: $dark-background-color;
-    color: $dark-text-color;
-  }
 
-  .layout__dark-mode-toggle {
-    color: $dark-text-color;
-  }
+    &__main {
+      background-color: $dark-background-color;
+      color: $dark-text-color;
+    }
 
-  .layout__dark-mode-toggle:hover {
-    color: $accent-color;
+    &__dark-mode-toggle {
+      color: $dark-text-color;
+    }
   }
 }

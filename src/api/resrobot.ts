@@ -26,7 +26,7 @@ export const getDepartures = async (tubeStopId: string) => {
         return departure.ProductAtStop?.name.includes("Tunnelbana");
       }).map((departure: any) => {
         const formattedName = departure.ProductAtStop?.name
-          .replace("Länstrafik -Tunnelbana", "Tube")
+          .replace("Länstrafik -Tunnelbana", "")
           .trim();
 
         const match = departure.direction.match(/^(.*?)\s?\(/);
