@@ -11,7 +11,7 @@ export type Station = {
 interface StationAutocompleteProps {
   value: string;
   onChange: (value: string) => void;
-  stations: Station[]; // Assuming you have a list of stations
+  stations: Station[];
 }
 
 const StationAutocomplete: React.FC<StationAutocompleteProps> = ({
@@ -21,18 +21,18 @@ const StationAutocomplete: React.FC<StationAutocompleteProps> = ({
 }) => {
   const [suggestions, setSuggestions] = useState<Station[]>([]);
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
-  const isInitialMount = useRef(true); // useRef to track the initial mount
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
     if (isInitialMount.current) {
-      isInitialMount.current = false; // After the initial mount, set this to false
+      isInitialMount.current = false;
     } else {
       if (value) {
         const matchedStations = stations
           .filter((station) =>
             station.station.toLowerCase().startsWith(value.toLowerCase())
           )
-          .slice(0, 10); // Limit the results to 10
+          .slice(0, 10);
         setSuggestions(matchedStations);
         setShowSuggestions(true);
       } else {
@@ -47,13 +47,11 @@ const StationAutocomplete: React.FC<StationAutocompleteProps> = ({
   };
 
   const handleSuggestionClick = (stationName: string) => {
-    onChange(stationName); // Update the input with the selected station name
-    setShowSuggestions(false); // Hide the suggestions list
+    onChange(stationName);
+    setShowSuggestions(false);
   };
 
-  // Hide suggestions when the input is blurred
   const handleBlur = () => {
-    // Use a timeout to delay the hiding of suggestions so that the click event on suggestions can be processed
     setTimeout(() => {
       setShowSuggestions(false);
     }, 100);

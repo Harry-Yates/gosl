@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
-import { FaCog, FaAngleUp, FaAngleDown } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
 import SettingsInput from "./SettingsInput";
 import PillSelection from "./PillSelection";
 import DepartureList from "./DepartureList";
 import StationAutocomplete, { Station } from "./stationAutocomplete";
 import { Departure } from "./types";
-import stations from "../../data/stockholmTubeStops.json";
 
 interface TubeStopInputProps {
   title: string;
   stations: Station[];
 }
 
-const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
+const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
   const [tubeStop, setTubeStop] = useState<string>("");
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState<boolean>(false);
