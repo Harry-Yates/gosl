@@ -1,0 +1,703 @@
+[
+  {
+    "number": "1",
+    "lines": ["17", "19"],
+    "station": "Abrahamsberg",
+    "opened": "1952",
+    "grade": "Elevated"
+  },
+  {
+    "number": "2",
+    "lines": ["11"],
+    "station": "Akalla",
+    "opened": "1977",
+    "grade": "Underground"
+  },
+  {
+    "number": "3",
+    "lines": ["17", "19"],
+    "station": "Åkeshov",
+    "opened": "1952",
+    "grade": "At grade"
+  },
+  {
+    "number": "4",
+    "lines": ["13"],
+    "station": "Alby",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "5",
+    "lines": ["17", "18", "19"],
+    "station": "Alvik",
+    "opened": "1952",
+    "grade": "Elevated"
+  },
+  {
+    "number": "6",
+    "lines": ["19"],
+    "station": "Ängbyplan",
+    "opened": "1952",
+    "grade": "Elevated"
+  },
+  {
+    "number": "7",
+    "lines": ["13"],
+    "station": "Aspudden",
+    "opened": "1964",
+    "grade": "Underground"
+  },
+  {
+    "number": "8",
+    "lines": ["13"],
+    "station": "Axelsberg",
+    "opened": "1965",
+    "grade": "At grade"
+  },
+  {
+    "number": "9",
+    "lines": ["17"],
+    "station": "Bagarmossen",
+    "opened": "1994",
+    "grade": "Underground"
+  },
+  {
+    "number": "10",
+    "lines": ["19"],
+    "station": "Bandhagen",
+    "opened": "1954",
+    "grade": "Elevated"
+  },
+  {
+    "number": "11",
+    "lines": ["14"],
+    "station": "Bergshamra",
+    "opened": "1978",
+    "grade": "Underground"
+  },
+  {
+    "number": "12",
+    "lines": ["17"],
+    "station": "Björkhagen",
+    "opened": "1958",
+    "grade": "Elevated"
+  },
+  {
+    "number": "13",
+    "lines": ["19"],
+    "station": "Blackeberg",
+    "opened": "1952",
+    "grade": "Open-cut"
+  },
+  {
+    "number": "14",
+    "lines": ["18"],
+    "station": "Blåsut",
+    "opened": "1950",
+    "grade": "At grade"
+  },
+  {
+    "number": "15",
+    "lines": ["13"],
+    "station": "Bredäng",
+    "opened": "1965",
+    "grade": "Open-cut"
+  },
+  {
+    "number": "16",
+    "lines": ["17", "19"],
+    "station": "Brommaplan",
+    "opened": "1952",
+    "grade": "Elevated"
+  },
+  {
+    "number": "17",
+    "lines": ["14"],
+    "station": "Danderyds sjukhus",
+    "opened": "1978",
+    "grade": "Underground"
+  },
+  {
+    "number": "18",
+    "lines": ["10"],
+    "station": "Duvbo",
+    "opened": "1985",
+    "grade": "Underground"
+  },
+  {
+    "number": "19",
+    "lines": ["19"],
+    "station": "Enskede gård",
+    "opened": "1951",
+    "grade": "At grade"
+  },
+  {
+    "number": "20",
+    "lines": ["18"],
+    "station": "Farsta",
+    "opened": "1960",
+    "grade": "Elevated"
+  },
+  {
+    "number": "21",
+    "lines": ["18"],
+    "station": "Farsta strand",
+    "opened": "1971",
+    "grade": "Covered at-grade"
+  },
+  {
+    "number": "22",
+    "lines": ["13"],
+    "station": "Fittja",
+    "opened": "1972",
+    "grade": "Elevated"
+  },
+  {
+    "number": "23",
+    "lines": ["14"],
+    "station": "Fruängen",
+    "opened": "1964",
+    "grade": "Elevated"
+  },
+  {
+    "number": "24",
+    "lines": ["10", "11", "17", "18", "19"],
+    "station": "Fridhemsplan",
+    "opened": "1952",
+    "grade": "Underground"
+  },
+  {
+    "number": "25",
+    "lines": ["13", "14", "17", "18", "19"],
+    "station": "Gamla stan",
+    "opened": "1957",
+    "grade": "Elevated"
+  },
+  {
+    "number": "26",
+    "lines": ["13"],
+    "station": "Gärdet",
+    "opened": "1967",
+    "grade": "Underground"
+  },
+  {
+    "number": "27",
+    "lines": ["19"],
+    "station": "Globen",
+    "opened": "1951",
+    "grade": "At grade"
+  },
+  {
+    "number": "28",
+    "lines": ["18"],
+    "station": "Gubbängen",
+    "opened": "1950",
+    "grade": "At grade"
+  },
+  {
+    "number": "29",
+    "lines": ["17", "18", "19"],
+    "station": "Gullmarsplan",
+    "opened": "1950",
+    "grade": "At grade"
+  },
+  {
+    "number": "30",
+    "lines": ["19"],
+    "station": "Hagsätra",
+    "opened": "1960",
+    "grade": "Elevated"
+  },
+  {
+    "number": "31",
+    "lines": ["14"],
+    "station": "Hägerstensåsen",
+    "opened": "1964",
+    "grade": "Elevated"
+  },
+  {
+    "number": "32",
+    "lines": ["11"],
+    "station": "Hallonbergen",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "33",
+    "lines": ["13"],
+    "station": "Hallunda",
+    "opened": "1975",
+    "grade": "At grade"
+  },
+  {
+    "number": "34",
+    "lines": ["17"],
+    "station": "Hammarbyhöjden",
+    "opened": "1958",
+    "grade": "At grade"
+  },
+  {
+    "number": "35",
+    "lines": ["19"],
+    "station": "Hässelby Gård",
+    "opened": "1958",
+    "grade": ""
+  },
+  {
+    "number": "36",
+    "lines": ["19"],
+    "station": "Hässelby Strand",
+    "opened": "1958",
+    "grade": "Below grade"
+  },
+  {
+    "number": "37",
+    "lines": ["10"],
+    "station": "Hjulsta",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "38",
+    "lines": ["19"],
+    "station": "Högdalen",
+    "opened": "1954",
+    "grade": "At grade"
+  },
+  {
+    "number": "39",
+    "lines": ["18"],
+    "station": "Hökarängen",
+    "opened": "1950",
+    "grade": "At grade"
+  },
+  {
+    "number": "40",
+    "lines": ["13", "14"],
+    "station": "Hornstull",
+    "opened": "1964",
+    "grade": "Underground"
+  },
+  {
+    "number": "41",
+    "lines": ["17", "18", "19"],
+    "station": "Hötorget",
+    "opened": "1952",
+    "grade": "Underground"
+  },
+  {
+    "number": "42",
+    "lines": ["11"],
+    "station": "Husby",
+    "opened": "1977",
+    "grade": "Underground"
+  },
+  {
+    "number": "43",
+    "lines": ["10"],
+    "station": "Huvudsta",
+    "opened": "1985",
+    "grade": "Underground"
+  },
+  {
+    "number": "44",
+    "lines": ["19"],
+    "station": "Islandstorget",
+    "opened": "1952",
+    "grade": "At grade"
+  },
+  {
+    "number": "45",
+    "lines": ["19"],
+    "station": "Johannelund",
+    "opened": "1956",
+    "grade": "At grade"
+  },
+  {
+    "number": "46",
+    "lines": ["13"],
+    "station": "Karlaplan",
+    "opened": "1967",
+    "grade": "Underground"
+  },
+  {
+    "number": "47",
+    "lines": ["17"],
+    "station": "Kärrtorp",
+    "opened": "1958",
+    "grade": "Elevated"
+  },
+  {
+    "number": "48",
+    "lines": ["11"],
+    "station": "Kista",
+    "opened": "1977",
+    "grade": "Elevated"
+  },
+  {
+    "number": "49",
+    "lines": ["17", "18", "19"],
+    "station": "Kristineberg",
+    "opened": "1952",
+    "grade": "At grade"
+  },
+  {
+    "number": "50",
+    "lines": ["10", "11"],
+    "station": "Kungsträdgården",
+    "opened": "1977",
+    "grade": "Underground"
+  },
+  {
+    "number": "51",
+    "lines": ["13", "14"],
+    "station": "Liljeholmen",
+    "opened": "1964",
+    "grade": "Underground"
+  },
+  {
+    "number": "52",
+    "lines": ["13"],
+    "station": "Mälarhöjden",
+    "opened": "1967",
+    "grade": "Underground"
+  },
+  {
+    "number": "53",
+    "lines": ["13", "14"],
+    "station": "Mariatorget",
+    "opened": "1964",
+    "grade": "Underground"
+  },
+  {
+    "number": "54",
+    "lines": ["13"],
+    "station": "Masmo",
+    "opened": "1972",
+    "grade": "Underground"
+  },
+  {
+    "number": "55",
+    "lines": ["17", "18", "19"],
+    "station": "Medborgarplatsen",
+    "opened": "1950",
+    "grade": "Underground"
+  },
+  {
+    "number": "56",
+    "lines": ["14"],
+    "station": "Midsommarkransen",
+    "opened": "1964",
+    "grade": "Underground"
+  },
+  {
+    "number": "57",
+    "lines": ["14"],
+    "station": "Mörby centrum",
+    "opened": "1978",
+    "grade": "Underground"
+  },
+  {
+    "number": "58",
+    "lines": ["11"],
+    "station": "Näckrosen",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "59",
+    "lines": ["13"],
+    "station": "Norsborg",
+    "opened": "1975",
+    "grade": "At grade"
+  },
+  {
+    "number": "60",
+    "lines": ["17", "18", "19"],
+    "station": "Odenplan",
+    "opened": "1952",
+    "grade": "Underground"
+  },
+  {
+    "number": "61",
+    "lines": ["13"],
+    "station": "Örnsberg",
+    "opened": "1964",
+    "grade": "Below grade"
+  },
+  {
+    "number": "62",
+    "lines": ["13", "14"],
+    "station": "Östermalmstorg",
+    "opened": "1965",
+    "grade": "Underground"
+  },
+  {
+    "number": "63",
+    "lines": ["19"],
+    "station": "Råcksta",
+    "opened": "1952",
+    "grade": "Elevated"
+  },
+  {
+    "number": "64",
+    "lines": ["10", "11"],
+    "station": "Rådhuset",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "65",
+    "lines": ["17", "18", "19"],
+    "station": "Rådmansgatan",
+    "opened": "1952",
+    "grade": "Underground"
+  },
+  {
+    "number": "66",
+    "lines": ["19"],
+    "station": "Rågsved",
+    "opened": "1959",
+    "grade": "Elevated"
+  },
+  {
+    "number": "67",
+    "lines": ["10"],
+    "station": "Rinkeby",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "68",
+    "lines": ["10"],
+    "station": "Rissne",
+    "opened": "1985",
+    "grade": "Underground"
+  },
+  {
+    "number": "69",
+    "lines": ["13"],
+    "station": "Ropsten",
+    "opened": "1967",
+    "grade": "Elevated"
+  },
+  {
+    "number": "70",
+    "lines": ["18"],
+    "station": "Sandsborg",
+    "opened": "1950",
+    "grade": "At grade"
+  },
+  {
+    "number": "71",
+    "lines": ["13"],
+    "station": "Sätra",
+    "opened": "1965",
+    "grade": "At grade"
+  },
+  {
+    "number": "72",
+    "lines": ["17", "18", "19"],
+    "station": "Skanstull",
+    "opened": "1950",
+    "grade": "Underground"
+  },
+  {
+    "number": "73",
+    "lines": ["13"],
+    "station": "Skärholmen",
+    "opened": "1967",
+    "grade": "Underground"
+  },
+  {
+    "number": "74",
+    "lines": ["17", "18"],
+    "station": "Skärmarbrink",
+    "opened": "1950",
+    "grade": "At grade"
+  },
+  {
+    "number": "75",
+    "lines": ["17"],
+    "station": "Skarpnäck",
+    "opened": "1994",
+    "grade": "Underground"
+  },
+  {
+    "number": "76",
+    "lines": ["18"],
+    "station": "Skogskyrkogården",
+    "opened": "1950",
+    "grade": "Elevated"
+  },
+  {
+    "number": "77",
+    "lines": ["13", "14", "17", "18", "19"],
+    "station": "Slussen",
+    "opened": "1950",
+    "grade": "Underground"
+  },
+  {
+    "number": "78",
+    "lines": ["19"],
+    "station": "Sockenplan",
+    "opened": "1951",
+    "grade": "Elevated"
+  },
+  {
+    "number": "79",
+    "lines": ["11"],
+    "station": "Solna centrum",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "80",
+    "lines": ["10"],
+    "station": "Solna strand",
+    "opened": "1985",
+    "grade": "Underground"
+  },
+  {
+    "number": "81",
+    "lines": ["17", "18", "19"],
+    "station": "Sankt Eriksplan",
+    "opened": "1952",
+    "grade": "Underground"
+  },
+  {
+    "number": "82",
+    "lines": ["14"],
+    "station": "Stadion",
+    "opened": "1973",
+    "grade": "Underground"
+  },
+  {
+    "number": "83",
+    "lines": ["10", "11"],
+    "station": "Stadshagen",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "84",
+    "lines": ["17", "19"],
+    "station": "Stora Mossen",
+    "opened": "1952",
+    "grade": "Elevated"
+  },
+  {
+    "number": "85",
+    "lines": ["19"],
+    "station": "Stureby",
+    "opened": "1951",
+    "grade": "At grade"
+  },
+  {
+    "number": "86",
+    "lines": ["10"],
+    "station": "Sundbybergs centrum",
+    "opened": "1985",
+    "grade": "Underground"
+  },
+  {
+    "number": "87",
+    "lines": ["19"],
+    "station": "Svedmyra",
+    "opened": "1951",
+    "grade": "Elevated"
+  },
+  {
+    "number": "88",
+    "lines": ["10", "11", "13", "14", "17", "18", "19"],
+    "station": "T-Centralen",
+    "opened": "1957",
+    "grade": "Underground"
+  },
+  {
+    "number": "89",
+    "lines": ["18"],
+    "station": "Tallkrogen",
+    "opened": "1950",
+    "grade": "Elevated"
+  },
+  {
+    "number": "90",
+    "lines": ["14"],
+    "station": "Tekniska högskolan",
+    "opened": "1973",
+    "grade": "Underground"
+  },
+  {
+    "number": "91",
+    "lines": ["14"],
+    "station": "Telefonplan",
+    "opened": "1964",
+    "grade": "Below grade"
+  },
+  {
+    "number": "92",
+    "lines": ["10"],
+    "station": "Tensta",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "93",
+    "lines": ["17", "18", "19"],
+    "station": "Thorildsplan",
+    "opened": "1952",
+    "grade": "Below grade"
+  },
+  {
+    "number": "94",
+    "lines": ["14"],
+    "station": "Universitetet",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "95",
+    "lines": ["19"],
+    "station": "Vällingby",
+    "opened": "1952",
+    "grade": "At grade"
+  },
+  {
+    "number": "96",
+    "lines": ["13"],
+    "station": "Vårberg",
+    "opened": "1967",
+    "grade": "Below grade"
+  },
+  {
+    "number": "97",
+    "lines": ["13"],
+    "station": "Vårby gård",
+    "opened": "1972",
+    "grade": "Elevated"
+  },
+  {
+    "number": "98",
+    "lines": ["14"],
+    "station": "Västertorp",
+    "opened": "1964",
+    "grade": "At grade"
+  },
+  {
+    "number": "99",
+    "lines": ["10", "11"],
+    "station": "Västra skogen",
+    "opened": "1975",
+    "grade": "Underground"
+  },
+  {
+    "number": "100",
+    "lines": ["13", "14"],
+    "station": "Zinkensdamm",
+
+    "opened": "1964",
+    "grade": "Underground"
+  }
+]
