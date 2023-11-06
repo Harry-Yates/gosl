@@ -22,7 +22,7 @@ const useTrafficLightSystem = (
 
   return useMemo(() => {
     if (!departures || departures.length === 0) {
-      return "transparent"; // No departures, no color
+      return "fff"; // No departures, no color
     }
 
     const closestDepartureTime = departures

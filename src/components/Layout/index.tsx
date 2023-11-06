@@ -61,26 +61,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </span>
             </div>
             <p>
-              Click settings <FaCog />
+              Click the settings icon <FaCog />
             </p>
             <p>
-              Enter a Stockholm tube stop and your walk time (mins) to the
-              station
+              Choose a Stockholm tube stop, input your walk time in minutes, and
+              filter your train options.
             </p>
-            <p>Select and filter the trains you want</p>
             <br />
-            <p>Red indicates you&apos;ve missed your train</p>
-            <p>Yellow get ready</p>
-            <p>Green GO! Make your train on time (1+ min buffer)</p>
+            <p>Missed train: Red</p>
+            <p>Get ready: Yellow</p>
+            <p>Go time: Green</p>
             <br />
-            <span>
-              Working? Click the bin and delete these boring instructions
-              forever!{" "}
+            <p>
+              Click the bin{" "}
               <FaTrash
                 className="layout__trash"
                 onClick={handleDeleteMeClick}
-              />
-            </span>
+              />{" "}
+              and delete instructions.
+            </p>
           </header>
         )}
         <div

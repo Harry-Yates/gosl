@@ -16,26 +16,31 @@ const PillSelection: React.FC<PillSelectionProps> = ({
   onPillClick,
   onAllClick,
 }) => {
+  // Check if there are any departures to display
+  const hasDepartures = departures && departures.length > 0;
+
   return (
     <div className="tube-stop-input__pills">
-      <button
-        className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
-        onClick={onAllClick}>
-        {selectAll ? "None" : "All"}
-      </button>
-      {departures &&
-        Array.from(
-          new Set<string>(departures.map((d) => d.formattedDestination || ""))
-        ).map((destination, index) => (
-          <button
-            key={index}
-            className={`pill ${
-              selectedPills.includes(destination) ? "selected" : ""
-            }`}
-            onClick={() => onPillClick(destination)}>
-            {destination}
-          </button>
-        ))}
+      {hasDepartures && (
+        <button
+          className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
+          onClick={onAllClick}>
+          {selectAll ? "None" : "All"}
+        </button>
+      )}
+      {hasDepartures &&
+        Array.from(new Set(departures.map((d) => d.formattedDestination || "")))
+          .sort() // Optional: sort the destinations alphabetically
+          .map((destination, index) => (
+            <button
+              key={index}
+              className={`pill ${
+                selectedPills.includes(destination) ? "selected" : ""
+              }`}
+              onClick={() => onPillClick(destination)}>
+              {destination}
+            </button>
+          ))}
     </div>
   );
 };

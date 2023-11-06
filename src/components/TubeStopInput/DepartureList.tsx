@@ -17,7 +17,7 @@ const DepartureList: React.FC<DepartureListProps> = ({
 }) => {
   return (
     <div>
-      <h4>Departures:</h4>
+      {showAllDepartures ? <h4>Departures:</h4> : " "}
       <ul>
         {(showAllDepartures
           ? departures

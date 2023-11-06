@@ -12,7 +12,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
-    width: 100lvw;
+    width: 100vw;
     text-align: center;
   }
 
@@ -20,6 +20,7 @@
     padding: $double-spacing-unit;
     margin-bottom: $double-spacing-unit;
     text-align: left;
+    animation: fadeIn 2s ease-out forwards;
   }
 
   &__trash:hover {
@@ -59,7 +60,6 @@
 
   p {
     font-size: $font-size-md;
-    // color: $text-color;
     margin: 0;
   }
 
@@ -83,7 +83,7 @@
   // Media queries for responsive adjustments
   @media (max-width: $breakpoint-lg) {
     &__container {
-      flex-direction: column; // Keep the vertical layout for small screens
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }

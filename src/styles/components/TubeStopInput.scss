@@ -8,8 +8,10 @@
   margin: $base-spacing-unit;
   max-width: $container-width-xs;
   min-width: $container-width-xxs;
+  min-height: 11rem;
   border-radius: $double-spacing-unit;
-  border: $half-spacing-unit solid transparent;
+  border: $half-spacing-unit solid $dark-background-color;
+  animation: fadeIn 2s ease-out forwards;
 
   &__input,
   &__info {
@@ -87,6 +89,8 @@
     background-color: $background-color;
     font-family: $base-font-family;
     font-size: $font-size-sm;
+    animation: fadeInScale 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transition: background-color 0.3s, color 0.3s;
 
     &:hover {
       background-color: lighten($primary-color, 10%);
@@ -140,7 +144,8 @@
 }
 
 .station-autocomplete {
-  position: relative; // This ensures that the absolute positioning of the child is relative to this parent
+  position: relative;
+  margin-top: 1rem;
 
   .tube-stop-input__input {
     width: 100%;
@@ -191,6 +196,7 @@
 [data-theme="dark"] .tube-stop-input {
   background-color: $dark-background-color;
   color: $dark-text-color;
+  border: $half-spacing-unit solid white;
 
   .suggestions-list {
     background: $dark-background-color;
