@@ -3,8 +3,9 @@ import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
 import { FaCog, FaAngleUp, FaAngleDown } from "react-icons/fa";
 import SettingsInput from "./SettingsInput";
+import PillSelection from "./PillSelection";
 
-interface Departure {
+export interface Departure {
   name: string;
   destination: string;
   time: string;
@@ -170,6 +171,15 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
           walkingTime={walkingTime}
           onTubeStopChange={setTubeStop}
           onWalkingTimeChange={setWalkingTime}
+        />
+      )}
+      {showSettings && (
+        <PillSelection
+          selectAll={selectAll}
+          selectedPills={selectedPills}
+          departures={departures || []} // Assuming departures is an array of Departure objects
+          onPillClick={handlePillClick}
+          onAllClick={handleAllClick}
         />
       )}
       {isLoadingDepartures ? (
