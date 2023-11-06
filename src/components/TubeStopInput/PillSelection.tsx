@@ -1,5 +1,5 @@
 import React from "react";
-import { Departure } from "../TubeStopInput";
+import { Departure } from "./types";
 
 interface PillSelectionProps {
   selectAll: boolean;

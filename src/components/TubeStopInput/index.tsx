@@ -4,14 +4,8 @@ import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
 import { FaCog, FaAngleUp, FaAngleDown } from "react-icons/fa";
 import SettingsInput from "./SettingsInput";
 import PillSelection from "./PillSelection";
-
-export interface Departure {
-  name: string;
-  destination: string;
-  time: string;
-  formattedName?: string;
-  formattedDestination?: string;
-}
+import DepartureList from "./DepartureList";
+import { Departure } from "./types";
 
 interface TubeStopInputProps {
   title: string;
@@ -185,29 +179,14 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
       {isLoadingDepartures ? (
         <p className="tube-stop-input__info">Loading departures...</p>
       ) : (
-        <div>
-          <h4>Departures:</h4>
-          <ul>
-            {(showAllDepartures
-              ? filteredDepartures
-              : filteredDepartures?.slice(0, MAX_VISIBLE_DEPARTURES)
-            )?.map((departure: Departure, index: number) => (
-              <li key={index}>
-                {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
-                {departure.formattedDestination} at {departure.time}
-              </li>
-            ))}
-          </ul>
-          {filteredDepartures &&
-            filteredDepartures.length > MAX_VISIBLE_DEPARTURES && (
-              <h6
-                onClick={() => setShowAllDepartures(!showAllDepartures)}
-                className="show-more-less-button">
-                {showAllDepartures ? <FaAngleUp /> : <FaAngleDown />}
-                {showAllDepartures ? "Show Less" : "Show More"}
-              </h6>
-            )}
-        </div>
+        <DepartureList
+          departures={filteredDepartures || []}
+          showAllDepartures={showAllDepartures}
+          toggleShowAllDepartures={() =>
+            setShowAllDepartures(!showAllDepartures)
+          }
+          maxVisibleDepartures={MAX_VISIBLE_DEPARTURES}
+        />
       )}
     </div>
   );
