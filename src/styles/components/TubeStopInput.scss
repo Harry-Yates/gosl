@@ -81,6 +81,33 @@
     margin-bottom: $base-spacing-unit;
   }
 
+  &__departure-list {
+    max-height: 200px; // Adjust the height as needed
+    overflow-y: auto; // Enables vertical scrolling
+    margin: 0;
+    padding: 0;
+    list-style: none; // Optional: removes bullet points from the list
+
+    &::-webkit-scrollbar {
+      width: $half-spacing-unit; // 4px
+      height: $half-spacing-unit;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $dark-background-color; // Light theme track color
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $secondary-color; // Light theme thumb color
+      border-radius: $half-spacing-unit; // 4px
+      background: $accent-color; // Dark theme track color
+
+      &:hover {
+        background: darken($secondary-color, 10%); // Darkens the thumb on hover
+      }
+    }
+  }
+
   .pill {
     padding: $half-spacing-unit $base-spacing-unit;
     border-radius: $base-spacing-unit;
@@ -251,6 +278,33 @@
 
     &:hover {
       color: $dark-accent-color;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $dark-accent-color; // Dark theme track color
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $dark-secondary-color; // Dark theme thumb color
+
+    &:hover {
+      background: lighten(
+        $dark-secondary-color,
+        10%
+      ); // Lightens the thumb on hover
+    }
+  }
+
+  // For Firefox
+  @supports (scrollbar-width: thin) {
+    &__departure-list {
+      scrollbar-width: thin; // 'auto' or 'thin'
+      scrollbar-color: $secondary-color $background-color; // thumb and track color for light theme
+
+      @media (prefers-color-scheme: dark) {
+        scrollbar-color: $dark-secondary-color $dark-background-color; // thumb and track color for dark theme
+      }
     }
   }
 }

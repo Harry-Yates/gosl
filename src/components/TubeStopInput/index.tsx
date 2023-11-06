@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
 import { FaCog } from "react-icons/fa";
@@ -7,7 +7,6 @@ import PillSelection from "./PillSelection";
 import DepartureList from "./DepartureList";
 import StationAutocomplete, { Station } from "./stationAutocomplete";
 import { Departure } from "./types";
-import useOutsideClick from "@/hooks/useOutsideClick";
 
 interface TubeStopInputProps {
   title: string;
@@ -32,14 +31,6 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
 
   const MAX_VISIBLE_DEPARTURES = 2;
 
-  const wrapperRef = useRef(null);
-  useOutsideClick(wrapperRef, () => {
-    if (showSettings) {
-      setShowSettings(false);
-    }
-  });
-
-  // Load initial state from local storage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedTubeStop = localStorage.getItem(tubeStopKey);
@@ -158,7 +149,6 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
 
   return (
     <div
-      ref={wrapperRef}
       className={`tube-stop-input ${trafficLightColor ? "traffic-light" : ""}`}
       style={{ borderColor: trafficLightColor }}>
       <div className="tube-stop-input__header">
