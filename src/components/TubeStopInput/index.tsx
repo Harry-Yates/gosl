@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
 import { FaCog, FaAngleUp, FaAngleDown } from "react-icons/fa";
+import SettingsInput from "./SettingsInput";
 
 interface Departure {
   name: string;
@@ -163,46 +164,13 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
           onClick={toggleSettings}
         />
       </div>
-
       {showSettings && (
-        <>
-          <input
-            type="text"
-            value={tubeStop}
-            onChange={handleTubeStopChange}
-            placeholder="Enter tube stop"
-            className="tube-stop-input__input"
-          />
-          <input
-            type="number"
-            value={walkingTime}
-            onChange={(e) => setWalkingTime(parseInt(e.target.value, 10))}
-            placeholder="Enter walk time"
-            className="tube-stop-input__input"
-          />
-          <div className="tube-stop-input__pills">
-            <button
-              className={`pill ${selectAll ? "all-selected" : "all-none-pill"}`}
-              onClick={handleAllClick}>
-              {selectAll ? "None" : "All"}
-            </button>
-            {departures &&
-              Array.from(
-                new Set<string>(
-                  departures.map((d: Departure) => d.formattedDestination || "")
-                )
-              ).map((destination, index) => (
-                <button
-                  key={index}
-                  className={`pill ${
-                    selectedPills.includes(destination) ? "selected" : ""
-                  }`}
-                  onClick={() => handlePillClick(destination)}>
-                  {destination}
-                </button>
-              ))}
-          </div>
-        </>
+        <SettingsInput
+          tubeStop={tubeStop}
+          walkingTime={walkingTime}
+          onTubeStopChange={setTubeStop}
+          onWalkingTimeChange={setWalkingTime}
+        />
       )}
       {isLoadingDepartures ? (
         <p className="tube-stop-input__info">Loading departures...</p>
