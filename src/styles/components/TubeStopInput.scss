@@ -62,6 +62,7 @@
     border: 1px solid $secondary-color;
     font-family: $base-font-family;
     font-size: $font-size-base;
+    transition: all 0.5s ease;
   }
 
   &__info {
@@ -134,6 +135,53 @@
 
     &:hover {
       color: $accent-color;
+    }
+  }
+}
+
+.station-autocomplete {
+  position: relative; // This ensures that the absolute positioning of the child is relative to this parent
+
+  .tube-stop-input__input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: $text-color;
+  border: 1px solid $secondary-color;
+  border-radius: $half-spacing-unit;
+  box-shadow: 0 $half-spacing-unit $double-spacing-unit rgba($text-dark, 0.2);
+  position: absolute;
+  z-index: $zindex-dropdown;
+  overflow-y: auto;
+  width: calc(100% - 2 * $half-spacing-unit); // Adjust for padding if necessary
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; // This will match the width of the station-autocomplete
+  box-sizing: border-box; // Include padding and borders in the width calculation
+  position: absolute;
+  top: 100%; // Position the dropdown right below the input
+  left: 0;
+
+  li {
+    padding: $half-spacing-unit $base-spacing-unit;
+    border-bottom: 1px solid $background-color;
+    cursor: pointer;
+    font-family: $base-font-family;
+    font-size: $font-size-sm;
+    line-height: $line-height;
+    &:hover {
+      background-color: $accent-color;
+      color: $dark-text-color;
+    }
+    &:last-child {
+      border-bottom: none;
     }
   }
 }

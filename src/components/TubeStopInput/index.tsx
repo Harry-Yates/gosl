@@ -5,11 +5,15 @@ import { FaCog, FaAngleUp, FaAngleDown } from "react-icons/fa";
 import SettingsInput from "./SettingsInput";
 import PillSelection from "./PillSelection";
 import DepartureList from "./DepartureList";
+import StationAutocomplete, { Station } from "./stationAutocomplete";
 import { Departure } from "./types";
+import stations from "../../data/stockholmTubeStops.json";
 
 interface TubeStopInputProps {
   title: string;
+  stations: Station[];
 }
+
 const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
   const [tubeStop, setTubeStop] = useState<string>("");
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
@@ -107,8 +111,8 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
     };
   }, [departures, selectedPills, walkingTime]);
 
-  const handleTubeStopChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTubeStop(e.target.value);
+  const handleTubeStopChange = (newTubeStop: string) => {
+    setTubeStop(newTubeStop);
   };
 
   const handlePillClick = (destination: string) => {
@@ -160,12 +164,19 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
         />
       </div>
       {showSettings && (
-        <SettingsInput
-          tubeStop={tubeStop}
-          walkingTime={walkingTime}
-          onTubeStopChange={setTubeStop}
-          onWalkingTimeChange={setWalkingTime}
-        />
+        <>
+          <StationAutocomplete
+            value={tubeStop}
+            onChange={handleTubeStopChange}
+            stations={stations} // Pass the stations data
+          />
+          <SettingsInput
+            tubeStop={tubeStop}
+            walkingTime={walkingTime}
+            onTubeStopChange={setTubeStop}
+            onWalkingTimeChange={setWalkingTime}
+          />
+        </>
       )}
       {showSettings && (
         <PillSelection
