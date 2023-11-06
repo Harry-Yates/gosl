@@ -14,10 +14,8 @@ The interface features a traffic light system to visually communicate the urgenc
 
 ## Future Enhancements
 
-- **Auto-complete for Tube Stops:** Introduce an auto-complete feature for tube stops to assist users in quickly finding their destinations.
 - **Geolocation-Based Walking Time:** Automate walking time calculations by using the user's current location, eliminating the need for manual input while planning the journey.
 - **User Profiles:** Implementation of user profiles for custom settings across multiple devices.
-- **Multilingual Support:** Introduction of multiple language options to cater to international users.
 - **Performance Optimisation:** Continuous improvements for faster load times and enhanced user interactions.
 
 ## Installation
