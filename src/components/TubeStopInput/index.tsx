@@ -27,6 +27,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
   const tubeStopKey = `tubeStop_${title}`;
   const localStorageKey = `selectedPills_${title}`;
   const walkingTimeKey = `walkingTime_${title}`;
+  const showSettingsKey = `showSettings_${title}`;
   const [showAllDepartures, setShowAllDepartures] = useState<boolean>(false);
 
   const MAX_VISIBLE_DEPARTURES = 2;
@@ -39,6 +40,11 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
         setTubeStop(storedTubeStop);
       }
 
+      const storedShowSettings = localStorage.getItem(showSettingsKey);
+      if (storedShowSettings) {
+        setShowSettings(storedShowSettings === "true");
+      }
+
       const initialPills = localStorage.getItem(localStorageKey)
         ? JSON.parse(localStorage.getItem(localStorageKey) as string)
         : [];
@@ -49,7 +55,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
         setWalkingTime(parseInt(storedWalkingTime, 10));
       }
     }
-  }, [localStorageKey, walkingTimeKey, tubeStopKey]);
+  }, [localStorageKey, walkingTimeKey, tubeStopKey, showSettingsKey]);
 
   // Save to local storage on change
   useEffect(() => {
@@ -57,6 +63,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
       localStorage.setItem(tubeStopKey, tubeStop);
       localStorage.setItem(localStorageKey, JSON.stringify(selectedPills));
       localStorage.setItem(walkingTimeKey, walkingTime.toString());
+      localStorage.setItem(showSettingsKey, showSettings.toString());
     }
   }, [
     tubeStop,
@@ -65,6 +72,8 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
     tubeStopKey,
     localStorageKey,
     walkingTimeKey,
+    showSettings,
+    showSettingsKey,
   ]);
 
   const { data: tubeStopId, isLoading: isLoadingId } = useTubeStopId(tubeStop);
@@ -145,12 +154,16 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title }) => {
       className={`tube-stop-input ${trafficLightColor ? "traffic-light" : ""}`}
       style={{ borderColor: trafficLightColor }}>
       <div className="tube-stop-input__header">
-        <h1 className="tube-stop-input__title">{title}</h1>
+        <div className="tube-stop-input__container">
+          <h1 className="tube-stop-input__title">{title}</h1>
+          <p className="tube-stop-input__subtitle">{tubeStop}</p>
+        </div>
         <FaCog
           className="tube-stop-input__toggle icon"
           onClick={toggleSettings}
         />
       </div>
+
       {showSettings && (
         <>
           <input
