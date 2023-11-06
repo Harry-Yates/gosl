@@ -2,8 +2,13 @@ import { useQuery } from "react-query";
 import * as api from "../api/resrobot";
 
 export const useTubeStopId = (tubeStop: string) => {
-  const query = useQuery(["tubeStopId", tubeStop], () =>
-    api.getTubeStopId(tubeStop)
+  const query = useQuery(
+    ["tubeStopId", tubeStop],
+    () => api.getTubeStopId(tubeStop),
+    {
+      // Only run the query if tubeStop is truthy
+      enabled: !!tubeStop,
+    }
   );
 
   return {

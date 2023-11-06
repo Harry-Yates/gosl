@@ -1,11 +1,28 @@
 export const getTubeStopId = async (tubeStop: string) => {
+  // if (!tubeStop) {
+  //   console.error("No tube stop provided");
+  //   return null;
+  // }
+
   try {
     const apiKey = process.env.NEXT_PUBLIC_RESROBOT_API_KEY;
     const res = await fetch(
-      `https://api.resrobot.se/v2.1/location.name?input=${tubeStop}&format=json&accessId=${apiKey}`
+      `https://api.resrobot.se/v2.1/location.name?input=${encodeURIComponent(
+        tubeStop
+      )}&format=json&accessId=${apiKey}`
     );
     const data = await res.json();
-    return data.stopLocationOrCoordLocation[0]?.StopLocation?.extId;
+
+    // Check if the array is present and has at least one element
+    if (
+      data.stopLocationOrCoordLocation &&
+      data.stopLocationOrCoordLocation.length > 0
+    ) {
+      return data.stopLocationOrCoordLocation[0]?.StopLocation?.extId;
+    } else {
+      console.error("No stop locations found in the response:", data);
+      return null;
+    }
   } catch (error) {
     console.error("Error fetching Tube Stop ID:", error);
     return null;
@@ -32,7 +49,7 @@ export const getDepartures = async (tubeStopId: string) => {
         const match = departure.direction.match(/^(.*?)\s?\(/);
         const formattedDestination = match
           ? match[1].replace("T-bana", "").trim()
-          : departure.direction;
+          : departure.direction || "";
 
         return {
           time: departure.time,

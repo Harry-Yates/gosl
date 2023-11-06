@@ -3,5 +3,5 @@ export interface Departure {
   destination: string;
   time: string;
   formattedName?: string;
-  formattedDestination?: string;
+  formattedDestination: string;
 }

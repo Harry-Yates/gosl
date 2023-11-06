@@ -4,7 +4,7 @@ import { Departure } from "./types";
 interface PillSelectionProps {
   selectAll: boolean;
   selectedPills: string[];
-  departures: Departure[]; // You'll need to import the Departure type
+  departures: Departure[];
   onPillClick: (destination: string) => void;
   onAllClick: () => void;
 }
