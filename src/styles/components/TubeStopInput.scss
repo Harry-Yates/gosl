@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: $base-spacing-unit;
   background-color: $background-color;
   margin: $base-spacing-unit;
-  max-width: $container-width-xs;
+  max-width: $container-width-xl;
   min-width: $container-width-xxs;
   min-height: 11rem;
   border-radius: $double-spacing-unit;

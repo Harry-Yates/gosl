@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
-import { FaCog } from "react-icons/fa";
+import { HiCog } from "react-icons/hi";
+import { HiOutlineCog } from "react-icons/hi";
 import SettingsInput from "./SettingsInput";
 import PillSelection from "./PillSelection";
 import DepartureList from "./DepartureList";
@@ -156,10 +157,17 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
           <h1 className="tube-stop-input__title">{title}</h1>
           <p className="tube-stop-input__subtitle">{tubeStop}</p>
         </div>
-        <FaCog
-          className="tube-stop-input__toggle icon"
-          onClick={toggleSettings}
-        />
+        {showSettings ? (
+          <HiCog
+            className="tube-stop-input__toggle icon"
+            onClick={toggleSettings}
+          />
+        ) : (
+          <HiOutlineCog
+            className="tube-stop-input__toggle icon"
+            onClick={toggleSettings}
+          />
+        )}
       </div>
       {showSettings && (
         <>
