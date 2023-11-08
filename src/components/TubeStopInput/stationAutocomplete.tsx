@@ -28,11 +28,10 @@ const StationAutocomplete: React.FC<StationAutocompleteProps> = ({
       isInitialMount.current = false;
     } else {
       if (value) {
-        const matchedStations = stations
-          .filter((station) =>
-            station.station.toLowerCase().startsWith(value.toLowerCase())
-          )
-          .slice(0, 10);
+        const matchedStations = stations.filter((station) =>
+          station.station.toLowerCase().startsWith(value.toLowerCase())
+        );
+        // .slice(0, 10);
         setSuggestions(matchedStations);
         setShowSuggestions(true);
       } else {

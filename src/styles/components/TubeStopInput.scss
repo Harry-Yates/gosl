@@ -6,7 +6,7 @@
   padding: $base-spacing-unit;
   background-color: $background-color;
   margin: $base-spacing-unit;
-  max-width: $container-width-xl;
+  max-width: $container-width-sm;
   min-width: $container-width-xxs;
   min-height: 11rem;
   border-radius: $double-spacing-unit;
@@ -193,8 +193,8 @@
   top: 100%;
   left: 0;
   box-sizing: border-box;
-  max-height: 200px; /* Adjust based on your needs */
   overflow-y: auto;
+  max-height: 200px;
 
   li {
     padding: $half-spacing-unit;
@@ -217,6 +217,12 @@
       border-bottom: none;
       // padding-bottom: $half-spacing-unit;
     }
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .suggestions-list {
+    max-height: 130px;
   }
 }
 
