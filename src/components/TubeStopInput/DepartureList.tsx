@@ -16,19 +16,21 @@ const DepartureList: React.FC<DepartureListProps> = ({
   maxVisibleDepartures,
 }) => {
   return (
-    <div>
-      {showAllDepartures ? <h4>Departures:</h4> : " "}
-      <ul className="tube-stop-input__departure-list">
-        {(showAllDepartures
-          ? departures
-          : departures.slice(0, maxVisibleDepartures)
-        ).map((departure, index) => (
-          <li key={index}>
-            {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
-            {departure.formattedDestination} at {departure.time}
-          </li>
-        ))}
-      </ul>
+    <>
+      {showAllDepartures && <h4>Departures:</h4>}
+      {showAllDepartures && (
+        <ul className="tube-stop-input__departure-list">
+          {(showAllDepartures
+            ? departures
+            : departures.slice(0, maxVisibleDepartures)
+          ).map((departure, index) => (
+            <li key={index}>
+              {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
+              {departure.formattedDestination} at {departure.time}
+            </li>
+          ))}
+        </ul>
+      )}
       {departures.length > maxVisibleDepartures && (
         <h6
           onClick={toggleShowAllDepartures}
@@ -37,7 +39,7 @@ const DepartureList: React.FC<DepartureListProps> = ({
           {showAllDepartures ? "Show Less" : "Show More"}
         </h6>
       )}
-    </div>
+    </>
   );
 };
 
