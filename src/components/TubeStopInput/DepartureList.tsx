@@ -17,8 +17,8 @@ const DepartureList: React.FC<DepartureListProps> = ({
 }) => {
   return (
     <>
-      {showAllDepartures && <h4>Departures:</h4>}
-      {showAllDepartures && (
+      {departures.length > maxVisibleDepartures && <h4>Departures:</h4>}
+      {departures.length > maxVisibleDepartures && (
         <ul className="tube-stop-input__departure-list">
           {(showAllDepartures
             ? departures
