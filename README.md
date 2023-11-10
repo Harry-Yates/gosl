@@ -1,11 +1,11 @@
-# GOSL - Swedish Tube Depature Traffic Light Gradient Indicatior
+# GOSL - Swedish Tube Departure x Traffic Light Gradient Indicator
 
 GOSL is a tool designed to assist commuters with real-time departure information for the Swedish tube system. GOSL serves as a proof of concept for future hardware integration, aiming to provide a quick way to know when to leave for your train.
 
 The interface features a traffic light system to visually communicate the urgency of departures, allowing users to customise their departure boards and walking times for a tailored commuting experience.
 
 <p align="center">
-  <img width="522" src="https://github.com/Harry-Yates/gosl/assets/82885837/77eb7613-5ba3-4efd-87ac-0a8f7be14bc1">
+<img width="501" src="https://github.com/Harry-Yates/gosl/assets/82885837/80b032d0-0ee4-4f36-9d64-f48ef5a93d70">
 </p>
 
 ### Features
@@ -13,7 +13,7 @@ The interface features a traffic light system to visually communicate the urgenc
 - Live departure times for Swedish tube stations.
 - Personalised settings saved in local storage for convenience.
 - Traffic light indicator system for departure urgency.
-- Customisable station titles for a personalised experience.
+- Customise station titles for a personalised experience.
 - Responsive design for a seamless experience across various devices.
 
 ## Future Enhancements
