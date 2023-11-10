@@ -149,7 +149,7 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
     setShowSettings((prev) => !prev);
   };
 
-  const convertToDateTime = (timeString) => {
+  const convertToDateTime = (timeString: string) => {
     const [hours, minutes] = timeString.split(":").map(Number);
     const date = new Date();
     date.setHours(hours, minutes, 0, 0); // Set hours and minutes, seconds and milliseconds to 0
