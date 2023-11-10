@@ -41,9 +41,8 @@
 
   &__subtitle {
     margin-top: $half-spacing-unit;
-    font-size: $font-size-base;
+    font-size: 0.9rem;
     color: $text-color;
-    margin-bottom: $base-spacing-unit;
     text-transform: capitalize;
   }
 
@@ -52,6 +51,7 @@
     cursor: pointer;
     font-size: $font-size-lg;
     color: $text-color;
+    align-self: self-start;
 
     &:hover {
       color: $accent-color;
@@ -106,6 +106,20 @@
         background: darken($secondary-color, 10%); // Darkens the thumb on hover
       }
     }
+  }
+
+  .countdown-title {
+    // margin-top: $half-spacing-unit;
+    font-size: 0.9rem;
+    //  font-size: $font-size-base;
+    line-height: 1.1;
+    color: $text-color;
+    margin-bottom: $base-spacing-unit;
+    text-transform: capitalize;
+  }
+
+  .fade {
+    animation: fadeIn 2s ease-out forwards;
   }
 
   .pill {

@@ -17,9 +17,11 @@ const DepartureList: React.FC<DepartureListProps> = ({
 }) => {
   return (
     <>
-      {departures.length > maxVisibleDepartures && <h4>Departures:</h4>}
       {departures.length > maxVisibleDepartures && (
-        <ul className="tube-stop-input__departure-list">
+        <h4 className="fade">Departures:</h4>
+      )}
+      {departures.length > maxVisibleDepartures && (
+        <ul className="tube-stop-input__departure-list fade">
           {(showAllDepartures
             ? departures
             : departures.slice(0, maxVisibleDepartures)
@@ -34,7 +36,7 @@ const DepartureList: React.FC<DepartureListProps> = ({
       {departures.length > maxVisibleDepartures && (
         <h6
           onClick={toggleShowAllDepartures}
-          className="tube-stop-input__show-more-less-button">
+          className="tube-stop-input__show-more-less-button fade">
           {showAllDepartures ? <FaAngleUp /> : <FaAngleDown />}
           {showAllDepartures ? "Show Less" : "Show More"}
         </h6>

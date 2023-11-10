@@ -8,6 +8,7 @@ import PillSelection from "./PillSelection";
 import DepartureList from "./DepartureList";
 import StationAutocomplete, { Station } from "./stationAutocomplete";
 import { Departure } from "./types";
+import Countdown from "./Countdown";
 
 interface TubeStopInputProps {
   title: string;
@@ -148,18 +149,31 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
     setShowSettings((prev) => !prev);
   };
 
+  const convertToDateTime = (timeString) => {
+    const [hours, minutes] = timeString.split(":").map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes, 0, 0); // Set hours and minutes, seconds and milliseconds to 0
+    return date;
+  };
+
+  const nextDepartureTime =
+    filteredDepartures && filteredDepartures.length > 0
+      ? convertToDateTime(filteredDepartures[0].time) // Assuming the first departure is the next one
+      : null;
+
   return (
     <div
       className={`tube-stop-input ${trafficLightColor ? "traffic-light" : ""}`}
       style={{ borderColor: trafficLightColor }}>
       <div className="tube-stop-input__header">
         <div className="tube-stop-input__container">
-          <h1 className="tube-stop-input__title">{title}</h1>
-          <p className="tube-stop-input__subtitle">{tubeStop}</p>
+          <h1 className="tube-stop-input__title fade">{title}</h1>
+          <p className="tube-stop-input__subtitle fade">{tubeStop}</p>
+          {nextDepartureTime && <Countdown targetTime={nextDepartureTime} />}
         </div>
         {showSettings ? (
           <HiCog
-            className="tube-stop-input__toggle icon"
+            className="tube-stop-input__toggle icon "
             onClick={toggleSettings}
           />
         ) : (
