@@ -4,6 +4,8 @@ GOSL is a tool designed to assist commuters with real-time departure information
 
 The interface features a traffic light system to visually communicate the urgency of departures, allowing users to customise their departure boards and walking times for a tailored commuting experience.
 
+<img width="1135" alt="Screenshot 2023-11-10 at 10 19 46 am" src="https://github.com/Harry-Yates/gosl/assets/82885837/6e152b38-8922-48a6-8b87-bbd834c06e43">
+
 ### Features
 
 - Live departure times for Swedish tube stations.
