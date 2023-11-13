@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaMoon, FaSun, FaCog, FaTrash } from "react-icons/fa";
+import { FaMoon, FaSun, FaCog, FaTrash, FaRedo } from "react-icons/fa";
+import { MdOutlineResetTv } from "react-icons/Md";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -21,26 +22,28 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    // Save the new state to localStorage
     localStorage.setItem("darkMode", (!darkMode).toString());
   };
 
-  // Apply the theme
+  const resetLocalStorage = () => {
+    localStorage.clear();
+    setDarkMode(true);
+    setShowDeleteMe(true);
+    window.location.reload();
+  };
+
   useEffect(() => {
     const body = document.body;
     const toggle = darkMode ? "dark" : "light";
     body.setAttribute("data-theme", toggle);
-    // Save the current state to localStorage
     localStorage.setItem("darkMode", darkMode.toString());
   }, [darkMode]);
 
-  // Update showDeleteMe based on localStorage after component mounts
   useEffect(() => {
     const savedVisibility = localStorage.getItem("showDeleteMe");
     setShowDeleteMe(savedVisibility !== "false");
   }, []);
 
-  // Handle click to hide the "delete me" section
   const handleDeleteMeClick = () => {
     setShowDeleteMe(false);
     localStorage.setItem("showDeleteMe", "false");
@@ -82,13 +85,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </p>
           </header>
         )}
-        <div
-          onClick={toggleDarkMode}
-          className="layout__dark-mode-toggle"
-          role="button"
-          aria-pressed={darkMode}
-          tabIndex={0}>
-          {darkMode ? <FaSun /> : <FaMoon />}
+        <div className="layout__controls">
+          <div
+            onClick={toggleDarkMode}
+            className="icon layout__dark-mode-toggle"
+            role="button"
+            aria-pressed={darkMode}
+            tabIndex={0}>
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </div>
+          <MdOutlineResetTv
+            className="icon layout__reset-icon"
+            onClick={resetLocalStorage}
+            role="button"
+            tabIndex={0}
+            title="Reset Settings"
+          />
         </div>
         <div className="layout__main">{children}</div>
       </div>

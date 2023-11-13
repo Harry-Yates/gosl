@@ -15,6 +15,27 @@
     width: 100vw;
     text-align: center;
   }
+  &__controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: $base-spacing-unit;
+
+    .icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: $font-size-md;
+      color: $text-color;
+      z-index: $zindex-modal;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
 
   &__header {
     padding: $double-spacing-unit;
@@ -64,13 +85,12 @@
   }
 
   &__dark-mode-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    position: relative;
+    display: inline;
+    padding-top: 0.4rem;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: $font-size-lg;
     color: $text-color;
     z-index: $zindex-modal;
   }
@@ -80,7 +100,6 @@
     flex-direction: row;
   }
 
-  // Media queries for responsive adjustments
   @media (max-width: $breakpoint-lg) {
     &__container {
       flex-direction: column;
@@ -115,7 +134,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: auto; // Adjust height as necessary
+      height: auto;
     }
   }
 }
@@ -141,6 +160,16 @@
     &__trash:hover {
       color: $dark-accent-color;
       cursor: pointer;
+    }
+
+    &__controls {
+      .icon {
+        color: $dark-text-color;
+
+        &:hover {
+          color: $dark-accent-color;
+        }
+      }
     }
   }
 }
