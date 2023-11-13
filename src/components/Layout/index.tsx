@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaMoon, FaSun, FaCog, FaTrash, FaRedo } from "react-icons/fa";
-import { MdOutlineResetTv } from "react-icons/Md";
+import { FaMoon, FaSun, FaCog, FaTrash } from "react-icons/fa";
+import { MdOutlineResetTv } from "react-icons/md";
 
 interface LayoutProps {
   children: React.ReactNode;
