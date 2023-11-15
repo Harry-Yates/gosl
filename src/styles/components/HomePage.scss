@@ -20,6 +20,7 @@
     font-family: $base-font-family;
     font-size: $font-size-md; // Adjust if necessary to fit the icon
     margin-top: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit;
     display: flex; // Using flex to center the content
     align-items: center; // Center vertically
     justify-content: center; // Center horizontally
