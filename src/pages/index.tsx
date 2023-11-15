@@ -12,7 +12,10 @@ const HomePage: React.FC = () => {
         title="Work"
         stations={stations}
       />
-      {/* <TubeStopInput title="Add +" stations={stations}/> */}
+      <TubeStopInput
+        title="Custom"
+        stations={stations}
+      />
     </>
   );
 };
