@@ -5,7 +5,7 @@ GOSL is a tool designed to assist commuters with real-time departure information
 The interface features a traffic light system to visually communicate the urgency of departures, allowing users to customise their departure boards and walking times for a tailored commuting experience.
 
 <p align="center">
-<img width="501" src="https://github.com/Harry-Yates/gosl/assets/82885837/80b032d0-0ee4-4f36-9d64-f48ef5a93d70">
+<img height="501" src="https://github.com/Harry-Yates/gosl/assets/82885837/b949ad20-1fd5-4c04-96a6-81e2524401d8">
 </p>
 
 ### Features
