@@ -15,24 +15,25 @@ const DepartureList: React.FC<DepartureListProps> = ({
   toggleShowAllDepartures,
   maxVisibleDepartures,
 }) => {
+  const displayDepartures = showAllDepartures
+    ? departures
+    : departures.slice(0, maxVisibleDepartures);
+
   return (
     <>
-      {/* {departures.length > maxVisibleDepartures && (
-        <h4 className="fade">Departures:</h4>
-      )} */}
-      {departures.length > maxVisibleDepartures && (
-        <ul className="tube-stop-input__departure-list fade">
-          {(showAllDepartures
-            ? departures
-            : departures.slice(0, maxVisibleDepartures)
-          ).map((departure, index) => (
-            <li key={index}>
-              {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
-              {departure.formattedDestination} at {departure.time}
-            </li>
-          ))}
-        </ul>
+      <ul className="tube-stop-input__departure-list fade">
+        {displayDepartures.map((departure, index) => (
+          <li key={index}>
+            {departure.formattedName ? `${departure.formattedName} to` : ""}{" "}
+            {departure.formattedDestination} at {departure.time}
+          </li>
+        ))}
+      </ul>
+
+      {departures.length === 0 && (
+        <h6 className="no-departures fade">No departures available</h6>
       )}
+
       {departures.length > maxVisibleDepartures && (
         <h6
           onClick={toggleShowAllDepartures}
