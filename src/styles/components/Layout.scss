@@ -1,19 +1,19 @@
 .layout {
   height: 100vh;
+  height: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: $double-spacing-unit;
-  margin: auto;
 
   &__container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    flex-direction: row;
-    width: 100vw;
+    flex-direction: column;
     text-align: center;
+    overflow-y: auto;
+    margin-top: 2.3rem;
   }
   &__controls {
     position: absolute;
@@ -40,29 +40,35 @@
   &__header {
     padding: $double-spacing-unit;
     margin-bottom: $double-spacing-unit;
-    text-align: left;
+    text-align: center;
     animation: fadeIn 2s ease-out forwards;
   }
 
-  &__trash:hover {
+  &__trash {
     color: $dark-accent-color;
     cursor: pointer;
   }
 
+  &__trash:hover {
+    color: $dark-accent-color;
+  }
+
   &__title {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: $base-spacing-unit;
+    // gap: $base-spacing-unit;
 
     h1 {
       margin-top: $half-spacing-unit;
-      margin: 0;
+      margin-bottom: $half-spacing-unit;
       font-size: $font-size-xl;
       font-weight: $font-weight-bold;
     }
 
     span {
-      margin-top: $double-spacing-unit;
+      // margin-top: $double-spacing-unit;
       font-size: $font-size-sm;
     }
 
@@ -97,45 +103,8 @@
 
   &__main {
     display: flex;
-    flex-direction: row;
-  }
-
-  @media (max-width: $breakpoint-lg) {
-    &__container {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &__header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    p {
-      font-size: $font-size-sm;
-    }
-
-    &__title {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      margin-bottom: $double-spacing-unit;
-      line-height: 0.2;
-    }
-
-    &__main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: auto;
-    }
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -143,7 +112,6 @@
 [data-theme="dark"] {
   .layout {
     background-color: $dark-background-color;
-
     &__main {
       background-color: $dark-background-color;
       color: $dark-text-color;

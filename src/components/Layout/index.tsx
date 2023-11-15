@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaMoon, FaSun, FaCog, FaTrash } from "react-icons/fa";
+import { HiOutlineTrash } from "react-icons/hi";
 import { MdOutlineResetTv } from "react-icons/md";
 
 interface LayoutProps {
@@ -56,13 +57,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <header className="layout__header">
             <div className="layout__title">
               <h1>GoSL</h1>
-              <br />
               <span>
                 <span className="color-green">Departure </span>
                 <span className="color-yellow">Traffic </span>
                 <span className="color-red">Light</span>
               </span>
             </div>
+            <br />
             <p>
               Click the settings icon <FaCog />
             </p>
@@ -77,7 +78,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <br />
             <p>
               Click the bin{" "}
-              <FaTrash
+              <HiOutlineTrash
                 className="layout__trash"
                 onClick={handleDeleteMeClick}
               />{" "}

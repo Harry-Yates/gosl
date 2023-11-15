@@ -1,0 +1,56 @@
+// HomePage.scss
+.homepage {
+  background-color: $background-color;
+  color: $text-color;
+  padding: $base-spacing-unit;
+  // Add more styles specific to the homepage layout
+
+  &__section {
+    // Styles for a specific section or part of the homepage
+    margin-bottom: $base-spacing-unit;
+  }
+
+  &__add-button {
+    background-color: $primary-color;
+    color: $text-light;
+    border: 2px solid $text-light; // White border
+    padding: $half-spacing-unit; // Adjust padding to make it more circular
+    border-radius: 50%; // Circular shape
+    cursor: pointer;
+    font-family: $base-font-family;
+    font-size: $font-size-md; // Adjust if necessary to fit the icon
+    margin-top: $base-spacing-unit;
+    display: flex; // Using flex to center the content
+    align-items: center; // Center vertically
+    justify-content: center; // Center horizontally
+    width: 3rem; // Specify width
+    height: 3rem; // Specify height to maintain circular shape
+    min-width: 3rem; // or any appropriate value
+    min-height: 3rem;
+
+    svg {
+      margin: 0; // Remove margin from the icon if any
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+// Dark theme specific styles
+[data-theme="dark"] {
+  .homepage {
+    background-color: $dark-primary-color;
+    color: $dark-text-light;
+
+    &__add-button {
+      background-color: $dark-primary-color;
+      color: $dark-text-light;
+
+      &:hover {
+        background-color: lighten($dark-primary-color, 10%);
+      }
+    }
+  }
+}

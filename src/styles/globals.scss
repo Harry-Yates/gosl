@@ -1,6 +1,11 @@
 @import "./_variables.scss";
 @import "./_reset.scss";
 
+html {
+  background-color: $dark-background-color;
+  height: 100vh;
+}
+
 body {
   font-family: $base-font-family;
   background-color: $background-color;
@@ -133,6 +138,7 @@ textarea {
 
 // Dark mode styles
 [data-theme="dark"] {
+  html,
   body {
     background-color: $dark-background-color;
     color: $dark-text-color;

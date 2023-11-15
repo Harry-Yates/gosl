@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTubeStopId, useDepartures } from "../../hooks/useResrobot";
 import useTrafficLightSystem from "../../hooks/useTrafficLightSystem";
-import { HiCog } from "react-icons/hi";
+import { HiCog, HiOutlineTrash } from "react-icons/hi";
 import { HiOutlineCog } from "react-icons/hi";
 import SettingsInput from "./SettingsInput";
 import PillSelection from "./PillSelection";
@@ -13,9 +13,14 @@ import Countdown from "./Countdown";
 interface TubeStopInputProps {
   title: string;
   stations: Station[];
+  onDelete: () => void;
 }
 
-const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
+const TubeStopInput: React.FC<TubeStopInputProps> = ({
+  title,
+  stations,
+  onDelete,
+}) => {
   const [tubeStop, setTubeStop] = useState<string>("");
   const [selectedPills, setSelectedPills] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState<boolean>(false);
@@ -171,17 +176,24 @@ const TubeStopInput: React.FC<TubeStopInputProps> = ({ title, stations }) => {
           <p className="tube-stop-input__subtitle fade">{tubeStop}</p>
           {nextDepartureTime && <Countdown targetTime={nextDepartureTime} />}
         </div>
-        {showSettings ? (
-          <HiCog
-            className="tube-stop-input__toggle icon "
-            onClick={toggleSettings}
-          />
-        ) : (
-          <HiOutlineCog
-            className="tube-stop-input__toggle icon"
-            onClick={toggleSettings}
-          />
-        )}
+        <div>
+          <button
+            className="tube-stop-input__delete-button"
+            onClick={onDelete}>
+            <HiOutlineTrash className="tube-stop-input__toggle icon" />
+          </button>
+          {showSettings ? (
+            <HiCog
+              className="tube-stop-input__toggle icon "
+              onClick={toggleSettings}
+            />
+          ) : (
+            <HiOutlineCog
+              className="tube-stop-input__toggle icon"
+              onClick={toggleSettings}
+            />
+          )}
+        </div>
       </div>
       {showSettings && (
         <>

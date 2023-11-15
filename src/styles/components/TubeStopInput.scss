@@ -233,12 +233,6 @@
   }
 }
 
-@media (max-width: $breakpoint-lg) {
-  .suggestions-list {
-    max-height: 130px;
-  }
-}
-
 [data-theme="dark"] .tube-stop-input {
   background-color: $dark-background-color;
   color: $dark-text-color;
