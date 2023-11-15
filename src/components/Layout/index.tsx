@@ -87,14 +87,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </header>
         )}
         <div className="layout__controls">
-          <div
+          {/* <div
             onClick={toggleDarkMode}
             className="icon layout__dark-mode-toggle"
             role="button"
             aria-pressed={darkMode}
             tabIndex={0}>
             {darkMode ? <FaSun /> : <FaMoon />}
-          </div>
+          </div> */}
           <MdOutlineResetTv
             className="icon layout__reset-icon"
             onClick={resetLocalStorage}

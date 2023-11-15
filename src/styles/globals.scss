@@ -3,12 +3,11 @@
 
 html {
   background-color: $dark-background-color;
-  height: 100vh;
 }
 
 body {
   font-family: $base-font-family;
-  background-color: $background-color;
+  background-color: $dark-background-color;
   color: $text-color;
   font-size: $base-font-size;
   line-height: $line-height;
